@@ -10,7 +10,7 @@ const ACCELERATION = 50
 func _physics_process(_delta):
 	motion.y += GRAVITY
 	# the higher the player jump the more gravity 
-	var friction = false
+	var friction = true
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 	# player moving right
