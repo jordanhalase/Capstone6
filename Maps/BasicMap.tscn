@@ -39,3 +39,9 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="player" parent="TileMap" instance=ExtResource( 1 )]
 position = Vector2( 240, 256 )
+
+[node name="Camera2D" type="Camera2D" parent="TileMap/player"]
+position = Vector2( 0, -480 )
+scale = Vector2( 4, 4 )
+current = true
+smoothing_enabled = true
