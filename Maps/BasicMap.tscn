@@ -43,5 +43,4 @@ position = Vector2( 240, 256 )
 [node name="Camera2D" type="Camera2D" parent="TileMap/player"]
 position = Vector2( 0, -480 )
 scale = Vector2( 4, 4 )
-current = true
 smoothing_enabled = true
