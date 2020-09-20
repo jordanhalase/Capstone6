@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var motion = Vector2()
+var velocity = Vector2()
 const UP = Vector2(0 , -1)
 const GRAVITY = 20 
 const MAX_SPEED = 200
@@ -8,29 +8,28 @@ const JUMP_HEIGHT = -500
 const ACCELERATION = 50 
 
 func _physics_process(_delta):
-	motion.y += GRAVITY
-	# the higher the player jump the more gravity 
+	# Integrate gravity using forward Euler method
+	velocity.y += GRAVITY
 	var friction = true
 	if Input.is_action_pressed("ui_right"):
-		motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
-	# player moving right
+		# player moving right
+		velocity.x = min(velocity.x + ACCELERATION, MAX_SPEED)
 		
 	elif Input.is_action_pressed("ui_left"):
-		motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
-	# player moving left 
+		# player moving left
+		velocity.x = max(velocity.x - ACCELERATION, -MAX_SPEED)
 	
-	# is_on_floor check if the player is on the floor or not 
+	# Check if the player is on the floor
 	if is_on_floor():
+		# velocity.y = 0
 		if Input.is_action_just_pressed("ui_up"):
-			motion.y = JUMP_HEIGHT
-			# player jumping 
+			# player jumping
+			velocity.y = JUMP_HEIGHT
 		if friction == true:
-			motion.x = lerp(motion.x, 0, 0.2)
-		
+			velocity.x = lerp(velocity.x, 0, 0.2)
 	else: 
 		if friction == true:
-			motion.x = lerp(motion.x, 0, 0.05)
-		
-	motion = move_and_slide(motion, UP)
+			velocity.x = lerp(velocity.x, 0, 0.05)
+	velocity = move_and_slide(velocity, UP)
 	pass
 
