@@ -14,6 +14,8 @@ var velocity = Vector2()
 var direction = 1
 
 var is_in_animation = false
+
+onready var player = get_node("../Player") 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -27,9 +29,13 @@ func _physics_process(_delta: float) -> void:
 		$AreaCheck.rotate(PI)
 		
 	if $AreaCheck.is_colliding():
-		is_in_animation = true
 		var node = $AreaCheck.get_collider()
-		sit()
+		if position.y <= player.position.y && node.jumpAcrossY == null && node.fallY == null:
+			pass
+		else:
+			is_in_animation = true
+			sit()
+			jump()
 		
 		
 	velocity = move_and_slide(velocity, FLOOR)
