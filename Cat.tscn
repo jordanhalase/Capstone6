@@ -4,7 +4,7 @@
 [ext_resource path="res://grumpy-cat.jpg" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.87173, 7.93733 )
+extents = Vector2( 8.00701, 8 )
 
 [node name="Cat" type="KinematicBody2D"]
 script = ExtResource( 1 )
