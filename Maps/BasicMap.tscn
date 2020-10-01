@@ -33,7 +33,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 0/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 1.97932, 0.340805 )
+extents = Vector2( 3.92886, 1.23234 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -47,6 +47,7 @@ script = ExtResource( 3 )
 [node name="AInode1" type="Area2D" parent="TileMap"]
 light_mask = 4
 position = Vector2( 240.033, 158.77 )
+scale = Vector2( 0.64, 0.600002 )
 gravity_vec = Vector2( 80, 1 )
 collision_layer = 8
 collision_mask = 12
@@ -55,6 +56,7 @@ script = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/AInode1"]
 position = Vector2( 0, -0.187286 )
 rotation = 1.5708
+scale = Vector2( 1.37501, 0.800009 )
 shape = SubResource( 3 )
 one_way_collision = true
 
