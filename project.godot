@@ -29,6 +29,17 @@ window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
+[layer_names]
+
+2d_render/layer_1="Map"
+2d_physics/layer_1="Map"
+2d_render/layer_2="Cat"
+2d_physics/layer_2="Player"
+2d_render/layer_3="Cat_AI_Box"
+2d_physics/layer_3="Cats"
+2d_render/layer_4="Player"
+2d_physics/layer_4="Cat_AI_Box"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
