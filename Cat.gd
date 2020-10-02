@@ -55,7 +55,7 @@ func _physics_process(_delta: float) -> void:
 				callback_params = [ai.jumpBelowVel, false]
 			else:
 				var dx = position.x - player.position.x
-				if (dx > 0 && dx < 120 && direction == true) || (dx < 0 && dx > -120 && direction == false):
+				if (dx > 0 && dx < MAX_DISTANCE && direction == true) || (dx < 0 && dx > -MAX_DISTANCE && direction == false):
 					callback_params = [null, true]
 				elif ai.jumpAcross:
 					callback_params = [ai.jumpAcrossVel, false]
