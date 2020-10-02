@@ -49,7 +49,7 @@ func _physics_process(_delta: float) -> void:
 			$Timer.connect("timeout", self, "_on_Timer_timeout", [ai.jumpAcrossVel[direction], false])
 		else:
 			var dx = position.x - player.position.x
-			if (dx > 0 && dx < 120 && direction == 1):
+			if (dx > 0 && dx < 120 && direction == 1) || (dx < 0 && dx > -120 && direction == 0):
 				$Timer.connect("timeout", self, "_on_Timer_timeout", [null, true])
 			else:
 				thought = false
