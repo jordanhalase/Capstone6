@@ -35,10 +35,8 @@ func _ready() -> void:
 	walk()
 
 func _physics_process(_delta: float) -> void:
-	velocity.y += GRAVITY
 	
-	if !is_on_floor():
-		thinking = false
+	velocity.y += GRAVITY
 	
 	if is_on_wall():
 		direction = !direction
@@ -61,6 +59,7 @@ func sit():
 func jump(jumpY):
 	velocity.y = -jumpY
 	print("Cat jumped ", jumpY, " units")
+	thinking = false
 	
 func walk():
 	if direction:
@@ -88,6 +87,7 @@ func _decide(ai):
 					walk()
 			if thinking:
 				$Timer.start()
+				print("sit")
 				sit()
 
 # Timer callback

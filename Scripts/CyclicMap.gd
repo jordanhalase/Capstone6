@@ -1,5 +1,7 @@
 extends TileMap
 
+class_name CyclicMap
+
 # The width of the entire map in units of 8x8 cells
 export var MAP_CELL_WIDTH: int = 60
 

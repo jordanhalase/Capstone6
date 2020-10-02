@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mainbirdside.png-228ae5bf0da3a69ef2b32d4269c4984a.stex"
+path="res://.import/littlebird.png-11bce17c076b70116f9c550a56035f77.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mainbirdside.png"
-dest_files=[ "res://.import/mainbirdside.png-228ae5bf0da3a69ef2b32d4269c4984a.stex" ]
+source_file="res://Sprites/littlebird.png"
+dest_files=[ "res://.import/littlebird.png-11bce17c076b70116f9c550a56035f77.stex" ]
 
 [params]
 

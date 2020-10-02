@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/AIBlock.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/AIBlock.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1, 4 )
+extents = Vector2( 4, 4 )
 
 [node name="AIBlock" type="Area2D"]
 collision_layer = 0

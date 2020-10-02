@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fox.png-9d81b9bd85810e07c626f6b5830ddd11.stex"
+path="res://.import/fox.png-785087e2a4b918ef40166d890b4d3dd9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fox.png"
-dest_files=[ "res://.import/fox.png-9d81b9bd85810e07c626f6b5830ddd11.stex" ]
+source_file="res://Sprites/fox.png"
+dest_files=[ "res://.import/fox.png-785087e2a4b918ef40166d890b4d3dd9.stex" ]
 
 [params]
 

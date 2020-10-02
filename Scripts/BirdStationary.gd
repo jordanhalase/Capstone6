@@ -1,4 +1,4 @@
-extends "res://HUD.gd"
+extends "res://Scripts/HUD.gd"
 
 func _on_BirdStationary_body_entered(body):
 	if body.name == "Player":
