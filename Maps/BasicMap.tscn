@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Maps/TileMap.gd" type="Script" id=3]
 [ext_resource path="res://Cat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Maps/AIJump1.gd" type="Script" id=5]
+[ext_resource path="res://Littlebird.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
@@ -66,3 +67,6 @@ position = Vector2( 120, 152 )
 
 [node name="Cat" parent="TileMap" instance=ExtResource( 4 )]
 position = Vector2( 160, 152 )
+
+[node name="Littlebird" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 339.2, 128 )
