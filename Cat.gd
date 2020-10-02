@@ -23,6 +23,10 @@ var reversed = false
 
 onready var player = get_node("../Player")
 
+# Parameters for the timer callback
+# [jumpY: float, changed_direction: bool]
+var callback_params = [0.0, false]
+
 func _ready() -> void:
 	pass
 
@@ -41,16 +45,15 @@ func _physics_process(_delta: float) -> void:
 		var ai = $AreaCheck.get_collider()
 		thought = true
 		if position.y > (player.position.y + EPSILON) && ai.jumpAbove[direction]:
-			# Pass the jump velocity and other arguments as a list to the timer
-			$Timer.connect("timeout", self, "_on_Timer_timeout", [ai.jumpAboveVel[direction], false])
+			callback_params = [ai.jumpAboveVel[direction], false]
 		elif position.y < (player.position.y - EPSILON) && ai.jumpBelow[direction]:
-			$Timer.connect("timeout", self, "_on_Timer_timeout", [ai.jumpBelowVel[direction], false])
+			callback_params = [ai.jumpBelowVel[direction], false]
 		elif ai.jumpAcross[direction]:
-			$Timer.connect("timeout", self, "_on_Timer_timeout", [ai.jumpAcrossVel[direction], false])
+			callback_params = [ai.jumpAcrossVel[direction], false]
 		else:
 			var dx = position.x - player.position.x
 			if (dx > 0 && dx < 120 && direction == 1) || (dx < 0 && dx > -120 && direction == 0):
-				$Timer.connect("timeout", self, "_on_Timer_timeout", [null, true])
+				callback_params = [null, true]
 			else:
 				thought = false
 		if thought:
@@ -81,7 +84,9 @@ func walk():
 	velocity.y += GRAVITY
 
 # Timer callback
-func _on_Timer_timeout(jumpY, changed_direction):
+func _on_Timer_timeout():
+	var jumpY = callback_params[0]
+	var changed_direction = callback_params[1]
 	if changed_direction:
 		direction = !direction
 		walk()
