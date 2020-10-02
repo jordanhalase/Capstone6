@@ -47,7 +47,7 @@ script = ExtResource( 3 )
 
 [node name="AInode1" type="Area2D" parent="TileMap"]
 light_mask = 4
-position = Vector2( 240.033, 158.77 )
+position = Vector2( 216, 160 )
 scale = Vector2( 0.64, 0.600002 )
 gravity_vec = Vector2( 80, 1 )
 collision_layer = 8
@@ -55,14 +55,14 @@ collision_mask = 4
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/AInode1"]
-position = Vector2( 0, -0.187286 )
+position = Vector2( 13.3333, -0.0117188 )
 rotation = 1.5708
 scale = Vector2( 1.37501, 0.800009 )
 shape = SubResource( 3 )
 one_way_collision = true
 
 [node name="Player" parent="TileMap" instance=ExtResource( 1 )]
-position = Vector2( 240, 248 )
+position = Vector2( 288, 152 )
 
 [node name="Cat" parent="TileMap" instance=ExtResource( 4 )]
 position = Vector2( 160, 152 )

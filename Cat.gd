@@ -1,57 +1,95 @@
 extends KinematicBody2D
 
-
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
 const GRAVITY = 4
 const SPEED = 72
-const FLOOR = Vector2(0 , -1)
+const FLOOR = Vector2(0, -1)
 
+# Give a small range where the player can be considered on the same level
+# as the cat is
+const EPSILON = 8
 
 var velocity = Vector2()
 
-var direction = 1
+# This is used to index an array where 0 is left and 1 is right
+var direction: int = 1
 
-var is_in_animation = false
+# Used to prevent multiple collisions with the same AI block
+# before completing the decided move
+var thought = false
+
+# Used similarly to `thought` but for decisions where the
+# cat stays on the ground
+var reversed = false
 
 onready var player = get_node("../Player")
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func _physics_process(_delta: float) -> void:
-	if !is_in_animation:
+	if !is_on_floor():
+		thought = false
+	
+	if !thought:
 		walk()
 	
 	if is_on_wall():
-		direction = direction * -1
+		direction = !direction
 		$AreaCheck.rotate(PI)
 		
-	if $AreaCheck.is_colliding():
-		var node = $AreaCheck.get_collider()
-		if position.y <= player.position.y && node.jumpAcrossY == null && node.fallY == null:
-			pass
+	if $AreaCheck.is_colliding() && !thought:
+		var ai = $AreaCheck.get_collider()
+		if position.y > (player.position.y + EPSILON) && ai.jumpAbove[direction]:
+			thought = true
+			# Pass the jump velocity and other arguments as a list to the timer
+			$Timer.connect("timeout", self, "_on_Timer_timeout", [ai.jumpAboveVel[direction], false])
+		elif position.y < (player.position.y - EPSILON) && ai.jumpBelow[direction]:
+			thought = true
+			$Timer.connect("timeout", self, "_on_Timer_timeout", [ai.jumpBelowVel[direction], false])
+		elif ai.jumpAcross[direction]:
+			thought = true
+			$Timer.connect("timeout", self, "_on_Timer_timeout", [ai.jumpAcrossVel[direction], false])
 		else:
-			is_in_animation = true
+			var dx = position.x - player.position.x
+			if (dx > 0 && dx < 120 && direction == 1):
+				print(direction)
+				print(dx)
+				thought = true
+				$Timer.connect("timeout", self, "_on_Timer_timeout", [null, true])
+			else:
+				thought = false
+		if thought:
+			$Timer.start()
 			sit()
-			jump()
-		
 		
 	velocity = move_and_slide(velocity, FLOOR)
 	get_parent().level_wrap(self)
 	
+	if reversed:
+		# This needs to happen AFTER move_and_slide to prevent
+		# double collisions with the AI block
+		reversed = false
+		thought = false
+	
 func sit():
 	velocity.x = 0
 	
-func jump():
-	pass
+func jump(jumpY):
+	velocity.y = -jumpY
+	print("Cat jumped ", jumpY, " units")
 	
 func walk():
-	velocity.x = SPEED * direction
+	if direction:
+		velocity.x = SPEED
+	else:
+		velocity.x = -SPEED
 	velocity.y += GRAVITY
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
-	
+# Timer callback
+func _on_Timer_timeout(jumpY, changed_direction):
+	if changed_direction:
+		direction = !direction
+		walk()
+		reversed = true
+	else:
+		jump(jumpY)
