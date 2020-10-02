@@ -11,7 +11,7 @@ const EPSILON = 8
 var velocity = Vector2()
 
 # This is used to index an array where 0 is left and 1 is right
-var direction: int = 1
+var direction: bool = true
 
 # Used to prevent multiple collisions with the same AI block
 # before completing the decided move
@@ -43,22 +43,23 @@ func _physics_process(_delta: float) -> void:
 		
 	if $AreaCheck.is_colliding() && !thought:
 		var ai = $AreaCheck.get_collider()
-		thought = true
-		if position.y > (player.position.y + EPSILON) && ai.jumpAbove[direction]:
-			callback_params = [ai.jumpAboveVel[direction], false]
-		elif position.y < (player.position.y - EPSILON) && ai.jumpBelow[direction]:
-			callback_params = [ai.jumpBelowVel[direction], false]
-		elif ai.jumpAcross[direction]:
-			callback_params = [ai.jumpAcrossVel[direction], false]
-		else:
-			var dx = position.x - player.position.x
-			if (dx > 0 && dx < 120 && direction == 1) || (dx < 0 && dx > -120 && direction == 0):
-				callback_params = [null, true]
+		if direction == ai.facesRight:
+			thought = true
+			if position.y > (player.position.y + EPSILON) && ai.jumpAbove:
+				callback_params = [ai.jumpAboveVel, false]
+			elif position.y < (player.position.y - EPSILON) && ai.jumpBelow:
+				callback_params = [ai.jumpBelowVel, false]
+			elif ai.jumpAcross:
+				callback_params = [ai.jumpAcrossVel, false]
 			else:
-				thought = false
-		if thought:
-			$Timer.start()
-			sit()
+				var dx = position.x - player.position.x
+				if (dx > 0 && dx < 120 && direction == true) || (dx < 0 && dx > -120 && direction == false):
+					callback_params = [null, true]
+				else:
+					thought = false
+			if thought:
+				$Timer.start()
+				sit()
 		
 	velocity = move_and_slide(velocity, FLOOR)
 	get_parent().level_wrap(self)

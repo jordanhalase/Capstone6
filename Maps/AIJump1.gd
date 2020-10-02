@@ -1,9 +1,11 @@
 extends Area2D
 
-const jumpAbove = [null, true]
-const jumpAcross = [null, false]
-const jumpBelow = [null, false]
+export var facesRight: bool = true
 
-const jumpAboveVel = [null, 152]
-const jumpAcrossVel = [null, null]
-const jumpBelowVel = [null, null]
+export var jumpAbove: bool = true
+export var jumpAcross: bool = true
+export var jumpBelow: bool = true
+
+export var jumpAboveVel: float = 152
+export var jumpAcrossVel: float = 100
+export var jumpBelowVel: float = 20

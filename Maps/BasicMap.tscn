@@ -48,7 +48,7 @@ script = ExtResource( 3 )
 
 [node name="AInode1" type="Area2D" parent="TileMap"]
 light_mask = 4
-position = Vector2( 216, 160 )
+position = Vector2( 216, 112 )
 scale = Vector2( 0.64, 0.600002 )
 gravity_vec = Vector2( 80, 1 )
 collision_layer = 8
@@ -63,10 +63,10 @@ shape = SubResource( 3 )
 one_way_collision = true
 
 [node name="Player" parent="TileMap" instance=ExtResource( 1 )]
-position = Vector2( 120, 152 )
+position = Vector2( 136, 104 )
 
 [node name="Cat" parent="TileMap" instance=ExtResource( 4 )]
-position = Vector2( 160, 152 )
+position = Vector2( 152, 104 )
 
 [node name="Littlebird" parent="TileMap" instance=ExtResource( 6 )]
 position = Vector2( 336, 128 )
