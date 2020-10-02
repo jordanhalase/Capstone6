@@ -4,7 +4,7 @@
 [ext_resource path="res://fox.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.00701, 8 )
+extents = Vector2( 4, 8 )
 
 [node name="Cat" type="KinematicBody2D"]
 collision_layer = 4
@@ -14,7 +14,6 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.00701332, 0 )
 shape = SubResource( 1 )
 
 [node name="AreaCheck" type="RayCast2D" parent="."]
