@@ -39,22 +39,17 @@ func _physics_process(_delta: float) -> void:
 		
 	if $AreaCheck.is_colliding() && !thought:
 		var ai = $AreaCheck.get_collider()
+		thought = true
 		if position.y > (player.position.y + EPSILON) && ai.jumpAbove[direction]:
-			thought = true
 			# Pass the jump velocity and other arguments as a list to the timer
 			$Timer.connect("timeout", self, "_on_Timer_timeout", [ai.jumpAboveVel[direction], false])
 		elif position.y < (player.position.y - EPSILON) && ai.jumpBelow[direction]:
-			thought = true
 			$Timer.connect("timeout", self, "_on_Timer_timeout", [ai.jumpBelowVel[direction], false])
 		elif ai.jumpAcross[direction]:
-			thought = true
 			$Timer.connect("timeout", self, "_on_Timer_timeout", [ai.jumpAcrossVel[direction], false])
 		else:
 			var dx = position.x - player.position.x
 			if (dx > 0 && dx < 120 && direction == 1):
-				print(direction)
-				print(dx)
-				thought = true
 				$Timer.connect("timeout", self, "_on_Timer_timeout", [null, true])
 			else:
 				thought = false
