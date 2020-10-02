@@ -19,6 +19,10 @@ config/name="Capstone6"
 run/main_scene="res://Maps/BasicMap.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Hud="*res://HUD.tscn"
+
 [display]
 
 window/size/width=480
