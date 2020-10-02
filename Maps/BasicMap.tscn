@@ -54,6 +54,7 @@ gravity_vec = Vector2( 80, 1 )
 collision_layer = 8
 collision_mask = 4
 script = ExtResource( 5 )
+jumpAbove = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/AInode1"]
 position = Vector2( 13.3333, -0.0117188 )
@@ -63,7 +64,7 @@ shape = SubResource( 3 )
 one_way_collision = true
 
 [node name="Player" parent="TileMap" instance=ExtResource( 1 )]
-position = Vector2( 136, 104 )
+position = Vector2( 288, 104 )
 
 [node name="Cat" parent="TileMap" instance=ExtResource( 4 )]
 position = Vector2( 152, 104 )

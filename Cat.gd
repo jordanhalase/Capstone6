@@ -1,27 +1,31 @@
 extends KinematicBody2D
 
-const GRAVITY = 4
-const SPEED = 72
-const FLOOR = Vector2(0, -1)
+const GRAVITY: float = 4.0
+const SPEED: float = 72.0
+const FLOOR := Vector2(0, -1)
+
+# Maximum distance from the player that the cat will turn around
+const MAX_DISTANCE: float = 120.0
 
 # Give a small range where the player can be considered on the same level
 # as the cat is
-const EPSILON = 8
+const EPSILON: float = 8.0
 
-var velocity = Vector2()
+var velocity := Vector2()
 
 # This is used to index an array where 0 is left and 1 is right
 var direction: bool = true
 
 # Used to prevent multiple collisions with the same AI block
 # before completing the decided move
-var thought = false
+var thought: bool = false
 
 # Used similarly to `thought` but for decisions where the
 # cat stays on the ground
-var reversed = false
+var reversed: bool = false
 
-onready var player = get_node("../Player")
+onready var player := get_node("../Player")
+onready var map := get_parent()
 
 # Parameters for the timer callback
 # [jumpY: float, changed_direction: bool]
@@ -49,12 +53,12 @@ func _physics_process(_delta: float) -> void:
 				callback_params = [ai.jumpAboveVel, false]
 			elif position.y < (player.position.y - EPSILON) && ai.jumpBelow:
 				callback_params = [ai.jumpBelowVel, false]
-			elif ai.jumpAcross:
-				callback_params = [ai.jumpAcrossVel, false]
 			else:
 				var dx = position.x - player.position.x
 				if (dx > 0 && dx < 120 && direction == true) || (dx < 0 && dx > -120 && direction == false):
 					callback_params = [null, true]
+				elif ai.jumpAcross:
+					callback_params = [ai.jumpAcrossVel, false]
 				else:
 					thought = false
 			if thought:
@@ -62,7 +66,7 @@ func _physics_process(_delta: float) -> void:
 				sit()
 		
 	velocity = move_and_slide(velocity, FLOOR)
-	get_parent().level_wrap(self)
+	map.level_wrap(self)
 	
 	if reversed:
 		# This needs to happen AFTER move_and_slide to prevent
