@@ -5,7 +5,7 @@
 [ext_resource path="res://Maps/TileMap.gd" type="Script" id=3]
 [ext_resource path="res://Cat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Maps/AIJump1.gd" type="Script" id=5]
-[ext_resource path="res://TestingPoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://BirdStationary.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
@@ -69,11 +69,8 @@ position = Vector2( 288, 104 )
 [node name="Cat" parent="TileMap" instance=ExtResource( 4 )]
 position = Vector2( 160, 152 )
 
-[node name="TestingPoint" parent="." instance=ExtResource( 6 )]
-position = Vector2( 312, 248 )
+[node name="BirdStationary" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 344, 128 )
 
-[node name="TestingPoint2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 312, 200 )
-
-[node name="TestingPoint3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 312, 152 )
+[node name="BirdStationary2" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 296, 128 )
