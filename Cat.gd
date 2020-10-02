@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const GRAVITY: float = 4.0
 const SPEED: float = 72.0
-const FLOOR := Vector2(0, -1)
+const UP := Vector2(0, -1)
 
 # Maximum distance from the player that the cat will turn around
 const MAX_DISTANCE: float = 120.0
@@ -18,9 +18,9 @@ var direction: bool = true
 
 # Used to prevent multiple collisions with the same AI block
 # before completing the decided move
-var thought: bool = false
+var thinking: bool = false
 
-# Used similarly to `thought` but for decisions where the
+# Used similarly to `thinking` but for decisions where the
 # cat stays on the ground
 var reversed: bool = false
 
@@ -32,47 +32,28 @@ onready var map := get_parent()
 var callback_params = [0.0, false]
 
 func _ready() -> void:
-	pass
+	walk()
 
 func _physics_process(_delta: float) -> void:
-	if !is_on_floor():
-		thought = false
+	velocity.y += GRAVITY
 	
-	if !thought:
-		walk()
+	if !is_on_floor():
+		thinking = false
 	
 	if is_on_wall():
 		direction = !direction
-		$AreaCheck.rotate(PI)
+	
+	if !thinking:
+		walk()
 		
-	if $AreaCheck.is_colliding() && !thought:
-		var ai = $AreaCheck.get_collider()
-		if direction == ai.facesRight:
-			thought = true
-			if position.y > (player.position.y + EPSILON) && ai.jumpAbove:
-				callback_params = [ai.jumpAboveVel, false]
-			elif position.y < (player.position.y - EPSILON) && ai.jumpBelow:
-				callback_params = [ai.jumpBelowVel, false]
-			else:
-				var dx = position.x - player.position.x
-				if (dx > 0 && dx < MAX_DISTANCE && direction == true) || (dx < 0 && dx > -MAX_DISTANCE && direction == false):
-					callback_params = [null, true]
-				elif ai.jumpAcross:
-					callback_params = [ai.jumpAcrossVel, false]
-				else:
-					thought = false
-			if thought:
-				$Timer.start()
-				sit()
-		
-	velocity = move_and_slide(velocity, FLOOR)
+	velocity = move_and_slide(velocity, UP)
 	map.level_wrap(self)
 	
 	if reversed:
 		# This needs to happen AFTER move_and_slide to prevent
 		# double collisions with the AI block
 		reversed = false
-		thought = false
+		thinking = false
 	
 func sit():
 	velocity.x = 0
@@ -86,7 +67,28 @@ func walk():
 		velocity.x = SPEED
 	else:
 		velocity.x = -SPEED
-	velocity.y += GRAVITY
+
+# Decision callback from AIBlock
+func _decide(ai):
+	if !thinking:
+		if direction == ai.facesRight:
+			thinking = true
+			if position.y > (player.position.y + EPSILON) && ai.jumpAbove:
+				callback_params = [ai.jumpAboveVel, false]
+			elif position.y < (player.position.y - EPSILON) && ai.jumpBelow:
+				callback_params = [ai.jumpBelowVel, false]
+			else:
+				var dx = position.x - player.position.x
+				if (dx > 0 && dx < MAX_DISTANCE && direction == true) || (dx < 0 && dx > -MAX_DISTANCE && direction == false):
+					callback_params = [null, true]
+				elif ai.jumpAcross:
+					callback_params = [ai.jumpAcrossVel, false]
+				else:
+					thinking = false
+					walk()
+			if thinking:
+				$Timer.start()
+				sit()
 
 # Timer callback
 func _on_Timer_timeout():
@@ -94,7 +96,6 @@ func _on_Timer_timeout():
 	var changed_direction = callback_params[1]
 	if changed_direction:
 		direction = !direction
-		walk()
 		reversed = true
 	else:
 		jump(jumpY)
