@@ -18,10 +18,12 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_right"):
 		# player moving right
+		$Sprite.set_flip_h(false)
 		velocity.x = min(velocity.x + ACCELERATION, MAX_HSPEED)
 		
 	elif Input.is_action_pressed("ui_left"):
 		# player moving left
+		$Sprite.set_flip_h(true)
 		velocity.x = max(velocity.x - ACCELERATION, -MAX_HSPEED)
 	
 	# Check if the player is on the floor
