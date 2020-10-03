@@ -15,10 +15,30 @@ const DELAY_FRAMES = 10
 var velocity: Vector2 = Vector2()
 onready var map = get_parent()
 
+const BirdFollowing = preload("res://Nodes/BirdFollowing.tscn")
+
+var delayBuffer = null
+var next = null
+
 func _ready():
-	var delayBuffer := DelayBuffer.new(DELAY_FRAMES, position)
+	delayBuffer = DelayBuffer.new(DELAY_FRAMES, position)
+	
+	var lag = BirdFollowing.instance()
+	add_child(lag)
+	lag.set_global_position(position)
+	next = lag
+	
+	var bird
+	for i in range(0):
+		bird = BirdFollowing.instance()
+		add_child(bird)
+		bird.delayBuffer = DelayBuffer.new(DELAY_FRAMES, position)
+		bird.set_global_position(position + Vector2(i, i))
+		lag.next = bird
+		lag = bird
 
 func _physics_process(_delta: float) -> void:
+	
 	# Integrate gravity using forward Euler method
 	velocity.y = min(MAX_VSPEED, velocity.y + GRAVITY)
 	
@@ -45,3 +65,11 @@ func _physics_process(_delta: float) -> void:
 			
 	velocity = move_and_slide(velocity, UP)
 	map.level_wrap(self)
+	
+	next.set_global_position(delayBuffer.enqueue(position))
+	#var bird = next
+	#var lag = self
+	#while bird != null:
+	#	bird.set_global_position(lag.delayBuffer.enqueue(lag.position))
+	#	lag = bird
+	#	bird = bird.next
