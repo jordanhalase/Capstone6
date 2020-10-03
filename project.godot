@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "CyclicMap",
 "language": "GDScript",
 "path": "res://Scripts/CyclicMap.gd"
+}, {
+"base": "Reference",
+"class": "DelayBuffer",
+"language": "GDScript",
+"path": "res://Scripts/Utility/DelayBuffer.gd"
 } ]
 _global_script_class_icons={
-"CyclicMap": ""
+"CyclicMap": "",
+"DelayBuffer": ""
 }
 
 [application]

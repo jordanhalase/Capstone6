@@ -1,7 +1,36 @@
 extends "res://addons/gut/test.gd"
 
-func test_example():
-	var x = 3
-	var y = 4
-	var z = x + y
-	assert_eq(z, 7)
+func test_delaybuffer():
+	var db = DelayBuffer.new(4, 7)
+	assert_eq(db.size(), 4)
+	assert_eq(db.used, 4)
+	assert_true(db.is_full())
+	assert_false(db.is_empty())
+
+	assert_eq(db.enqueue(1), 7)
+	assert_eq(db.used, 4)
+	assert_eq(db.enqueue(3), 7)
+	assert_eq(db.used, 4)
+	assert_eq(db.enqueue(5), 7)
+	assert_eq(db.used, 4)
+	assert_eq(db.enqueue(9), 7)
+	assert_eq(db.used, 4)
+	assert_eq(db.enqueue(11), 1)
+	assert_eq(db.used, 4)
+	assert_eq(db.enqueue(13), 3)
+	assert_eq(db.used, 4)
+	assert_eq(db.enqueue(15), 5)
+	assert_eq(db.used, 4)
+	assert_eq(db.enqueue(17), 9)
+	assert_eq(db.used, 4)
+
+	assert_eq(db.dequeue(), 11)
+	assert_eq(db.used, 3)
+	assert_eq(db.dequeue(), 13)
+	assert_eq(db.used, 2)
+	assert_eq(db.dequeue(), 15)
+	assert_eq(db.used, 1)
+	assert_eq(db.dequeue(), 17)
+	assert_eq(db.used, 0)
+	assert_true(db.is_empty())
+	assert_false(db.is_full())

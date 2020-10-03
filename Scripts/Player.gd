@@ -9,8 +9,14 @@ const ACCELERATION = 6
 const FRICTION_COEF = 0.16
 const FRICTION = ACCELERATION*FRICTION_COEF
 
+# The size of the delay buffer
+const DELAY_FRAMES = 10
+
 var velocity: Vector2 = Vector2()
 onready var map = get_parent()
+
+func _ready():
+	var delayBuffer := DelayBuffer.new(DELAY_FRAMES, position)
 
 func _physics_process(_delta: float) -> void:
 	# Integrate gravity using forward Euler method
