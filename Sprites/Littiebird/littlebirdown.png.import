@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fox.png-785087e2a4b918ef40166d890b4d3dd9.stex"
+path="res://.import/littlebirdown.png-a1ade72b9da4145ab563e2e080a9e7e7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/fox.png"
-dest_files=[ "res://.import/fox.png-785087e2a4b918ef40166d890b4d3dd9.stex" ]
+source_file="res://Sprites/Littiebird/littlebirdown.png"
+dest_files=[ "res://.import/littlebirdown.png-a1ade72b9da4145ab563e2e080a9e7e7.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

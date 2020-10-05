@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/littlebird.png-11bce17c076b70116f9c550a56035f77.stex"
+path="res://.import/mainbirdslide.png-8d5c15df8cb67243125cdbf6fc7dafe4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/littlebird.png"
-dest_files=[ "res://.import/littlebird.png-11bce17c076b70116f9c550a56035f77.stex" ]
+source_file="res://Sprites/Mainbird/mainbirdslide.png"
+dest_files=[ "res://.import/mainbirdslide.png-8d5c15df8cb67243125cdbf6fc7dafe4.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
