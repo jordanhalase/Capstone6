@@ -172,3 +172,6 @@ jumpAbove = false
 position = Vector2( 16, 160 )
 facesRight = false
 jumpAbove = false
+
+[node name="BirdStationary3" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 192, 224 )
