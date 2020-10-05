@@ -64,6 +64,15 @@ func _physics_process(_delta: float) -> void:
 			velocity.x = min(0, velocity.x + FRICTION)
 			
 	velocity = move_and_slide(velocity, UP)
+
+# This was commented here because the score is counted multiple
+# times due to the follwingBirds!
+#	for i in get_slide_count():
+#		var collision = get_slide_collision(i)
+#		if collision.collider.name == "BirdUnchained":
+#			# TODO: figure out how to add the little bird back to the chain
+#			collision.collider.queue_free()
+			
 	map.level_wrap(self)
 	
 	next.set_global_position(delayBuffer.enqueue(position))
