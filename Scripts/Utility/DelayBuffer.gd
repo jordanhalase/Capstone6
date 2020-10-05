@@ -1,6 +1,6 @@
 class_name DelayBuffer
 
-const array: Array = []
+var array: Array = []
 var front: int = 0
 var back: int = 0
 var used: int = 0

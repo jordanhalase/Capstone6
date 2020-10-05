@@ -1,18 +1,16 @@
 extends Area2D
 
-const DELAY_FRAMES = 10
+# This node essentially acts like a struct and is fully controlled from its
+# parent.
 
 var delayBuffer = null
 var next = null
 
-#func _init(bufferLength: int, initial).():
-#	delayBuffer = DelayBuffer.new(bufferLength, initial)
-
-func _ready():
-	#delayBuffer = DelayBuffer.new(DELAY_FRAMES, position)
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	if next != null:
-#		next.set_global_position(delayBuffer.enqueue(position))
+# TODO (Jordan): When a cat collides, then iterate through the remaining
+# birds via their `next` references, disable rendering, and spawn a
+# `BirdUnchained`, preferrably from an object pool.
+#
+# Then pass the current position, velocity, and animation state to that
+# `BirdUnchained`.
+func _on_BirdFollowing_body_entered(body):
+	pass # Replace with function body.

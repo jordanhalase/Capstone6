@@ -34,3 +34,18 @@ func test_delaybuffer():
 	assert_eq(db.used, 0)
 	assert_true(db.is_empty())
 	assert_false(db.is_full())
+
+func test_chain():
+	var db = []
+	db.resize(4)
+	for i in range(4):
+		db[i] = DelayBuffer.new(4, 0)
+	var lp = 1
+	lp = db[0].enqueue(lp)
+	assert_eq(lp, 0)
+	lp = db[1].enqueue(lp)
+	assert_eq(lp, 0)
+	lp = db[2].enqueue(lp)
+	assert_eq(lp, 0)
+	lp = db[3].enqueue(lp)
+	assert_eq(lp, 0)
