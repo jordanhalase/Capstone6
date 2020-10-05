@@ -17,16 +17,13 @@ func _physics_process(delta):
 	else:
 		$Sprite.flip_h = false
 	velocity = move_and_slide(velocity, get_floor_normal())
-	for i in get_slide_count():
-		var collision = get_slide_collision(i)
-		print("Colided with:" + collision.collider.name)
-		if collision.collider.name == "Player":
-			# TODO: figure out how to add the little bird back to the chain
-			get_node("/root/Hud").score += 100
-			queue_free()
-
 	map.level_wrap(self)
 	
 func _on_Timer_timeout():
 	timer.start()
 	velocity.x *= -1.0
+
+func _on_Area2D_body_entered(body):
+	# TODO: figure out how to add the little bird back to the chain
+	get_node("/root/Hud").score += 100
+	queue_free()
