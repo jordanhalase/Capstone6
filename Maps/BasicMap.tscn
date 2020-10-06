@@ -175,3 +175,27 @@ jumpAbove = false
 
 [node name="BirdStationary3" parent="TileMap" instance=ExtResource( 6 )]
 position = Vector2( 192, 224 )
+
+[node name="BirdStationary4" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 104, 128 )
+
+[node name="BirdStationary5" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 160, 128 )
+
+[node name="BirdStationary6" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 240, 80 )
+
+[node name="BirdStationary7" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 64, 80 )
+
+[node name="BirdStationary8" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 384, 80 )
+
+[node name="BirdStationary9" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 240, 24 )
+
+[node name="BirdStationary10" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 136, 24 )
+
+[node name="BirdStationary11" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 376, 24 )

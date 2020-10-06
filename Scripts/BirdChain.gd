@@ -3,6 +3,7 @@ extends Node
 const BirdFollowing = preload("res://Nodes/BirdFollowing.tscn")
 
 onready var target: Node = get_node("../Player")
+var map: Node
 var num_birds: int = 0
 var delayBuffer: DelayBuffer
 var next: Node
@@ -18,6 +19,7 @@ func _init(num_birds: int) -> void:
 	self.num_birds = num_birds
 
 func _ready() -> void:
+	map = get_parent()
 	delayBuffer = DelayBuffer.new(DELAY_FRAMES + DELAY_TARGET, target.position)
 	
 	var lag: Node
@@ -25,6 +27,7 @@ func _ready() -> void:
 		lag = BirdFollowing.instance()
 		add_child(lag)
 		lag.delayBuffer = DelayBuffer.new(DELAY_FRAMES, target.position)
+		lag.map = map
 		lag.set_global_position(target.position)
 		next = lag
 	
@@ -33,6 +36,7 @@ func _ready() -> void:
 		bird = BirdFollowing.instance()
 		add_child(bird)
 		bird.delayBuffer = DelayBuffer.new(DELAY_FRAMES, target.position)
+		bird.map = map
 		bird.set_global_position(target.position)
 		lag.next = bird
 		lag = bird
