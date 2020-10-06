@@ -63,7 +63,7 @@ position = Vector2( 344, 128 )
 position = Vector2( 296, 128 )
 
 [node name="BirdUnchained" parent="TileMap" instance=ExtResource( 2 )]
-position = Vector2( 96, 248 )
+position = Vector2( 184, 176 )
 
 [node name="Cat" parent="TileMap" instance=ExtResource( 4 )]
 position = Vector2( 200, 152 )
