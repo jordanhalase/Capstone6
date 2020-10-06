@@ -3,8 +3,17 @@ extends Area2D
 # This node essentially acts like a struct and is fully controlled from its
 # parent.
 
-var delayBuffer = null
-var next = null
+var delayBuffer: DelayBuffer
+var next: Node
+var active: bool
+
+func _ready():
+	# TODO: Only set to active when birds are collected
+	set_active(false)
+
+func set_active(active: bool) -> void:
+	self.active = active
+	$Sprite.visible = active
 
 # TODO (Jordan): When a cat collides, then iterate through the remaining
 # birds via their `next` references, disable rendering, and spawn a
