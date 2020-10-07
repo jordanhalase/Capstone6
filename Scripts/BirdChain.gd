@@ -15,8 +15,8 @@ const DELAY_FRAMES = 12
 # of the birds tightly packed
 const DELAY_TARGET = 4
 
-func _init(num_birds: int) -> void:
-	self.num_birds = num_birds
+func _init(birds: int) -> void:
+	num_birds = birds
 
 func _ready() -> void:
 	map = get_parent()
@@ -32,7 +32,7 @@ func _ready() -> void:
 		next = lag
 	
 	var bird: Node
-	for i in range(num_birds - 1):
+	for _i in range(num_birds - 1):
 		bird = BirdFollowing.instance()
 		add_child(bird)
 		bird.delayBuffer = DelayBuffer.new(DELAY_FRAMES, target.position)

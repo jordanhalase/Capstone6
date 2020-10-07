@@ -14,9 +14,9 @@ func _ready():
 	# TODO: Only set to active when birds are collected
 	set_active(false)
 
-func set_active(active: bool) -> void:
-	self.active = active
-	$Sprite.visible = active
+func set_active(activate: bool) -> void:
+	active = activate
+	$Sprite.visible = activate
 
 # TODO (Jordan): When a cat collides, then iterate through the remaining
 # birds via their `next` references, disable rendering, and spawn a
@@ -24,7 +24,7 @@ func set_active(active: bool) -> void:
 #
 # Then pass the current position, velocity, and animation state to that
 # `BirdUnchained`.
-func _on_BirdFollowing_body_entered(body):
+func _on_BirdFollowing_body_entered(_body):
 	var bird = self
 	while bird != null:
 		if (bird.active):
