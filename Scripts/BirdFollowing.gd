@@ -29,7 +29,7 @@ func _on_BirdFollowing_body_entered(_body):
 	while bird != null:
 		if (bird.active):
 			var birdUnchained := BirdUnchained.instance()
-			map.add_child(birdUnchained)
+			map.call_deferred("add_child", birdUnchained)
 			birdUnchained.set_global_position(bird.position)
 			bird.set_active(false)
 		bird = bird.next
