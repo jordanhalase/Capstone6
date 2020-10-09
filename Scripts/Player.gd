@@ -9,8 +9,12 @@ const ACCELERATION = 6
 const FRICTION_COEF = 0.16
 const FRICTION = ACCELERATION*FRICTION_COEF
 
+const COCONUT= preload("res://Nodes/ThrowingNut.tscn")
+
 var velocity: Vector2 = Vector2()
 onready var map = get_parent()
+
+var hasThrowable: bool = false
 
 func _ready():
 	pass
@@ -41,6 +45,19 @@ func _physics_process(_delta: float) -> void:
 		else:
 			velocity.x = min(0, velocity.x + FRICTION)
 			
+	if Input.is_action_just_pressed("shoot"):
+		if hasThrowable == true:
+			var coconut = COCONUT.instance()
+			get_parent().add_child(coconut)
+			#chooses which side to shoot from
+			if $Sprite.flip_h == false:
+				coconut.position = $ShootRight.global_position
+			else:
+				coconut.position = $ShootLeft.global_position
+				coconut.direction = -1
+			
+			hasThrowable = false
+			
 	velocity = move_and_slide(velocity, UP)
 
 # This was commented here because the score is counted multiple
@@ -52,3 +69,10 @@ func _physics_process(_delta: float) -> void:
 #			collision.collider.queue_free()
 			
 	map.level_wrap(self)
+# lets pick up nut node know if the player already has a nut
+func pick_up() -> bool:
+	if hasThrowable == false:
+		hasThrowable = true
+		return true
+	else:
+		return false

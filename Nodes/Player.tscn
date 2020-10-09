@@ -20,3 +20,9 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
 shape = SubResource( 1 )
+
+[node name="ShootRight" type="Position2D" parent="."]
+position = Vector2( 7, 0 )
+
+[node name="ShootLeft" type="Position2D" parent="."]
+position = Vector2( -7, 0 )
