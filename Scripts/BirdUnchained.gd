@@ -31,5 +31,4 @@ func _on_Timer_timeout():
 func _on_Area2D_body_entered(_body):
 	# TODO: figure out how to add the little bird back to the chain
 	get_node("../BirdChain").increment_chain()
-	get_node("/root/Hud").score += 100
 	queue_free()
