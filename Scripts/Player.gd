@@ -40,23 +40,22 @@ func _physics_process(_delta: float) -> void:
 		if Input.is_action_pressed("ui_up"):
 			# player jumping
 			velocity.y = -JUMP_HEIGHT
+			#player shooting
+			if hasThrowable:
+				var weapon = WEAPON.instance()
+				get_parent().add_child(weapon)
+				#chooses which side to shoot from
+				if $Sprite.flip_h == false:
+					weapon.position = $ShootRight.global_position
+				else:
+					weapon.position = $ShootLeft.global_position
+					weapon.direction = -1
+			
+			hasThrowable = false
 		if velocity.x >= 0:
 			velocity.x = max(0, velocity.x - FRICTION)
 		else:
 			velocity.x = min(0, velocity.x + FRICTION)
-			
-	if Input.is_action_just_pressed("ui_up"):
-		if hasThrowable == true:
-			var weapon = WEAPON.instance()
-			get_parent().add_child(weapon)
-			#chooses which side to shoot from
-			if $Sprite.flip_h == false:
-				weapon.position = $ShootRight.global_position
-			else:
-				weapon.position = $ShootLeft.global_position
-				weapon.direction = -1
-			
-			hasThrowable = false
 			
 	velocity = move_and_slide(velocity, UP)
 
