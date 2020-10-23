@@ -8,6 +8,7 @@ export var MAP_CELL_WIDTH: int = 60
 const BirdStationary = preload("res://Scripts/BirdStationary.gd")
 const BirdUnchained = preload("res://Scripts/BirdUnchained.gd")
 const BirdChain = preload("res://Scripts/BirdChain.gd")
+const HUD = preload("res://Nodes/HUD.tscn")
 
 # Map width in pixels
 var MAP_WIDTH
@@ -31,6 +32,10 @@ func _ready():
 	var birdChain := BirdChain.new(num_birds)
 	birdChain.set_name("BirdChain")
 	add_child(birdChain)
+	
+	var hud := HUD.instance()
+	hud.set_name("HUD")
+	add_child(hud)
 
 # Other nodes can use this to keep themselves from wandering out of the level
 func level_wrap(node):
