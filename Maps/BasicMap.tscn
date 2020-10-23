@@ -7,7 +7,7 @@
 [ext_resource path="res://Nodes/AIBlock.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/BirdStationary.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Sprites/tile.png" type="Texture" id=7]
-[ext_resource path="res://Nodes/PickUpNut.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Nodes/Weapon_Pickup.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )

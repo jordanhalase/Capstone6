@@ -9,7 +9,7 @@ const ACCELERATION = 6
 const FRICTION_COEF = 0.16
 const FRICTION = ACCELERATION*FRICTION_COEF
 
-const COCONUT= preload("res://Nodes/ThrowingNut.tscn")
+const COCONUT= preload("res://Nodes/Weapon_In_Motion.tscn")
 
 var velocity: Vector2 = Vector2()
 onready var map = get_parent()
