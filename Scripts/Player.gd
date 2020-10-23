@@ -9,7 +9,7 @@ const ACCELERATION = 6
 const FRICTION_COEF = 0.16
 const FRICTION = ACCELERATION*FRICTION_COEF
 
-const COCONUT= preload("res://Nodes/Weapon_In_Motion.tscn")
+const WEAPON= preload("res://Nodes/Weapon_In_Motion.tscn")
 
 var velocity: Vector2 = Vector2()
 onready var map = get_parent()
@@ -45,16 +45,16 @@ func _physics_process(_delta: float) -> void:
 		else:
 			velocity.x = min(0, velocity.x + FRICTION)
 			
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("ui_up"):
 		if hasThrowable == true:
-			var coconut = COCONUT.instance()
-			get_parent().add_child(coconut)
+			var weapon = WEAPON.instance()
+			get_parent().add_child(weapon)
 			#chooses which side to shoot from
 			if $Sprite.flip_h == false:
-				coconut.position = $ShootRight.global_position
+				weapon.position = $ShootRight.global_position
 			else:
-				coconut.position = $ShootLeft.global_position
-				coconut.direction = -1
+				weapon.position = $ShootLeft.global_position
+				weapon.direction = -1
 			
 			hasThrowable = false
 			
