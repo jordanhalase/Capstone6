@@ -30,5 +30,7 @@ func _on_Cat_body_entered(body):
 		var newDyingCat = DyingCatScene.instance()
 		newDyingCat.position = get_position()
 		newDyingCat.velocity.x = velocity.x*2
+		if(velocity.x > 0):
+			newDyingCat.facesLeft = false
 		replace_by(newDyingCat)
 		queue_free()
