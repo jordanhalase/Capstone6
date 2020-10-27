@@ -32,7 +32,7 @@ onready var map := get_parent()
 var callback_params = [0.0, false]
 
 func _ready() -> void:
-	$Sprite.set_flip_h(!facesRight)
+	$AnimatedSprite.set_flip_h(!facesRight)
 	walk()
 
 func _physics_process(_delta: float) -> void:
@@ -56,6 +56,7 @@ func _physics_process(_delta: float) -> void:
 	
 func sit():
 	velocity.x = 0
+	$AnimatedSprite.play("stop")
 	
 func jump(jumpY):
 	velocity.y = -jumpY
@@ -66,10 +67,11 @@ func walk():
 		velocity.x = SPEED
 	else:
 		velocity.x = -SPEED
+	$AnimatedSprite.play("run")
 
 func flip_direction():
 	facesRight = !facesRight
-	$Sprite.set_flip_h(!facesRight)
+	$AnimatedSprite.set_flip_h(!facesRight)
 
 # Decision callback from AIBlock
 func _decide(ai):
