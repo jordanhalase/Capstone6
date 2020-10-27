@@ -29,5 +29,6 @@ func _on_Cat_body_entered(body):
 		var DyingCatScene = load("res://Nodes/DyingCat.tscn")
 		var newDyingCat = DyingCatScene.instance()
 		newDyingCat.position = get_position()
+		newDyingCat.velocity.x = velocity.x*2
 		replace_by(newDyingCat)
 		queue_free()
