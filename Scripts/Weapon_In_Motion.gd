@@ -20,3 +20,14 @@ func _physics_process(delta):
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
+
+
+# TODO: Try to use signals instade
+func _on_Cat_body_entered(body):
+	if("Cat" in body.name):
+		body.queue_free()
+		var DyingCatScene = load("res://Nodes/DyingCat.tscn")
+		var newDyingCat = DyingCatScene.instance()
+		newDyingCat.position = get_position()
+		replace_by(newDyingCat)
+		queue_free()
