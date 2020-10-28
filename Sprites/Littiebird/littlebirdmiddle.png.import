@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/littlebirdground.png-768f7b811fc688eabbc149641a751d60.stex"
+path="res://.import/littlebirdmiddle.png-887c709cedfdca3bbe3f5c80f61e6de3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Littiebird/littlebirdground.png"
-dest_files=[ "res://.import/littlebirdground.png-768f7b811fc688eabbc149641a751d60.stex" ]
+source_file="res://Sprites/Littiebird/littlebirdmiddle.png"
+dest_files=[ "res://.import/littlebirdmiddle.png-887c709cedfdca3bbe3f5c80f61e6de3.stex" ]
 
 [params]
 

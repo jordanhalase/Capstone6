@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/BirdUnchained.tscn" type="PackedScene" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://Nodes/Cat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/AIBlock.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/BirdStationary.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Sprites/tile.png" type="Texture" id=7]
+[ext_resource path="res://Maps/Tiles/tile.png" type="Texture" id=7]
 [ext_resource path="res://Nodes/Weapon_Pickup.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Maps/Tiles/background.png" type="Texture" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
@@ -206,3 +207,9 @@ position = Vector2( 136, 24 )
 
 [node name="BirdStationary11" parent="CyclicMap" instance=ExtResource( 6 )]
 position = Vector2( 376, 24 )
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 240, 136 )
+scale = Vector2( 7.5, 4.25 )
+z_index = -1
+texture = ExtResource( 9 )
