@@ -1,7 +1,10 @@
 extends Node2D
 
-var score = 0 setget update_score
+var score = 0 
 
-func update_score(value): 
-	score = value
+func _ready() ->void:
+	EventBus.connect("bird_collected", self, "update_score")
+	
+func update_score(): 
+	score = score + 10
 	get_node("HUD/score").set_text("SCORE: " +str(score))
