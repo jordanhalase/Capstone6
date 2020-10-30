@@ -56,7 +56,7 @@ func _physics_process(_delta: float) -> void:
 	
 func sit():
 	velocity.x = 0
-	$AnimatedSprite.play("stop")
+	#$AnimatedSprite.play("stop")
 	
 func jump(jumpY):
 	velocity.y = -jumpY
