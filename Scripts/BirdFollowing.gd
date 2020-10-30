@@ -1,12 +1,14 @@
 extends Area2D
 
+class_name BirdFollowing
+
 # This node essentially acts like a struct and is fully controlled from its
 # parent.
 
 const BirdUnchained := preload("res://Nodes/BirdUnchained.tscn")
 
 var delayBuffer: DelayBuffer
-var next: Node
+var next: BirdFollowing
 var active: bool
 var map: Node
 
