@@ -9,11 +9,11 @@ var delayBuffer: DelayBuffer
 var next: Node
 
 # The size of the delay buffer
-const DELAY_FRAMES = 12
+const DELAY_FRAMES: int = 12
 
 # This is used to keep distance to the first bird while keeping the rest
 # of the birds tightly packed
-const DELAY_TARGET = 4
+const DELAY_TARGET: int = 4
 
 func _init(birds: int) -> void:
 	num_birds = birds
@@ -43,7 +43,7 @@ func _ready() -> void:
 		lag.next = bird
 		lag = bird
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	# TODO: This will eventually need to pass velocity and animation state
 	# in addition to position.
 	var lag: Node = self

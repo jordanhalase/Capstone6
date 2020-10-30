@@ -13,7 +13,7 @@ const HUD = preload("res://Nodes/HUD.tscn")
 # Map width in pixels
 var MAP_WIDTH
 
-func _ready():
+func _ready() -> void:
 	MAP_WIDTH = MAP_CELL_WIDTH*cell_size.x
 	
 	var used_cells := .get_used_cells()
@@ -38,7 +38,7 @@ func _ready():
 	add_child(hud)
 
 # Other nodes can use this to keep themselves from wandering out of the level
-func level_wrap(node):
+func level_wrap(node) -> bool:
 	# Wrap around the infinite map
 	var wrapped: bool = node.position.x >= MAP_WIDTH or node.position.x < 0
 	node.position.x = wrapf(node.position.x, 0, MAP_WIDTH)

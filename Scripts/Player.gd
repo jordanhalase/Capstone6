@@ -1,15 +1,15 @@
 extends KinematicBody2D
 
-const UP = Vector2(0, -1)
-const GRAVITY = 4
-const MAX_HSPEED = 80
-const MAX_VSPEED = 168
-const JUMP_HEIGHT = 164
-const ACCELERATION = 6
-const FRICTION_COEF = 0.16
-const FRICTION = ACCELERATION*FRICTION_COEF
+const UP := Vector2(0, -1)
+const GRAVITY: float = 4.0
+const MAX_HSPEED: float = 80.0
+const MAX_VSPEED: float = 168.0
+const JUMP_HEIGHT: float = 164.0
+const ACCELERATION: float = 6.0
+const FRICTION_COEF: float = 0.16
+const FRICTION: float = ACCELERATION*FRICTION_COEF
 
-const WEAPON= preload("res://Nodes/Weapon_In_Motion.tscn")
+const WEAPON = preload("res://Nodes/Weapon_In_Motion.tscn")
 
 var velocity: Vector2 = Vector2()
 onready var map = get_parent()

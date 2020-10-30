@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const SPEED = 250
+const SPEED: float = 250.0
 var velocity: Vector2 = Vector2()
-var direction = 1
+var direction: int = 1
 
 onready var map = get_parent()
 

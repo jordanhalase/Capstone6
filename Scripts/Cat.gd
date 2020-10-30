@@ -54,27 +54,27 @@ func _physics_process(_delta: float) -> void:
 		reversed = false
 		thinking = false
 	
-func sit():
+func sit() -> void:
 	velocity.x = 0
 	#$AnimatedSprite.play("stop")
 	
-func jump(jumpY):
+func jump(jumpY) -> void:
 	velocity.y = -jumpY
 	thinking = false
 	
-func walk():
+func walk() -> void:
 	if facesRight:
 		velocity.x = SPEED
 	else:
 		velocity.x = -SPEED
 	$AnimatedSprite.play("run")
 
-func flip_direction():
+func flip_direction() -> void:
 	facesRight = !facesRight
 	$AnimatedSprite.set_flip_h(!facesRight)
 
 # Decision callback from AIBlock
-func _decide(ai):
+func _decide(ai) -> void:
 	if !thinking:
 		if facesRight == ai.facesRight:
 			thinking = true
@@ -96,7 +96,7 @@ func _decide(ai):
 				sit()
 
 # Timer callback
-func _on_Timer_timeout():
+func _on_Timer_timeout() -> void:
 	var jumpY = callback_params[0]
 	var changed_direction = callback_params[1]
 	if changed_direction:

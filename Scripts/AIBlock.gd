@@ -10,5 +10,5 @@ export var jumpAboveVel: float = 156
 export var jumpAcrossVel: float = 80
 export var jumpBelowVel: float = 20
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(body) -> void:
 	body._decide(self)

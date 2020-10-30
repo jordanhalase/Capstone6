@@ -10,7 +10,7 @@ var next: Node
 var active: bool
 var map: Node
 
-func _ready():
+func _ready() -> void:
 	# TODO: Only set to active when birds are collected
 	set_active(false)
 
@@ -24,7 +24,7 @@ func set_active(activate: bool) -> void:
 #
 # Then pass the current position, velocity, and animation state to that
 # `BirdUnchained`.
-func _on_BirdFollowing_body_entered(_body):
+func _on_BirdFollowing_body_entered(_body) -> void:
 	var bird = self
 	while bird != null:
 		if (bird.active):
