@@ -12,7 +12,7 @@ var Cat = preload("res://Scripts/Cat.gd")
 # Do not reset the timer when hitting multiple cats.
 var hit_cat: bool = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity.x = SPEED*direction
 	velocity = move_and_slide(velocity)
 	if map.level_wrap(self) and !hit_cat:
