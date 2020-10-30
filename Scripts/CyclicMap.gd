@@ -40,4 +40,6 @@ func _ready():
 # Other nodes can use this to keep themselves from wandering out of the level
 func level_wrap(node):
 	# Wrap around the infinite map
+	var wrapped: bool = node.position.x >= MAP_WIDTH or node.position.x < 0
 	node.position.x = wrapf(node.position.x, 0, MAP_WIDTH)
+	return wrapped
