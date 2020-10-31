@@ -47,7 +47,7 @@ func _process(_delta: float) -> void:
 	# TODO: This will eventually need to pass velocity and animation state
 	# in addition to position.
 	var lag: Node = self
-	var lagpos = target.position
+	var lagpos: Vector2 = target.position
 	var bird: BirdFollowing = next
 	while bird != null:
 		lagpos = lag.delayBuffer.enqueue(lagpos)
@@ -63,4 +63,4 @@ func increment_chain() -> void:
 		else:
 			bird.set_active(true)
 			return
-	print("Bird chain overflow")
+	push_error("Bird chain overflow")
