@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name AIBlock
+
 export var facesRight: bool = true
 
 export var jumpAbove: bool = true

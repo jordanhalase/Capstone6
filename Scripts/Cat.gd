@@ -25,7 +25,7 @@ var thinking: bool = false
 var reversed: bool = false
 
 onready var player := get_node("../Player")
-onready var map := get_parent()
+onready var map: CyclicMap = get_parent()
 
 # Parameters for the timer callback
 # [jumpY: float, changed_direction: bool]
@@ -46,6 +46,7 @@ func _physics_process(_delta: float) -> void:
 		walk()
 		
 	velocity = move_and_slide(velocity, UP)
+	# warning-ignore:return_value_discarded
 	map.level_wrap(self)
 	
 	if reversed:
@@ -58,7 +59,7 @@ func sit() -> void:
 	velocity.x = 0
 	#$AnimatedSprite.play("stop")
 	
-func jump(jumpY) -> void:
+func jump(jumpY: float) -> void:
 	velocity.y = -jumpY
 	thinking = false
 	
@@ -74,7 +75,7 @@ func flip_direction() -> void:
 	$AnimatedSprite.set_flip_h(!facesRight)
 
 # Decision callback from AIBlock
-func _decide(ai) -> void:
+func _decide(ai: AIBlock) -> void:
 	if !thinking:
 		if facesRight == ai.facesRight:
 			thinking = true

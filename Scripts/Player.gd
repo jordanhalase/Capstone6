@@ -9,10 +9,10 @@ const ACCELERATION: float = 6.0
 const FRICTION_COEF: float = 0.16
 const FRICTION: float = ACCELERATION*FRICTION_COEF
 
-const WEAPON = preload("res://Nodes/Weapon_In_Motion.tscn")
+const WEAPON := preload("res://Nodes/Weapon_In_Motion.tscn")
 
 var velocity: Vector2 = Vector2()
-onready var map = get_parent()
+onready var map: CyclicMap = get_parent()
 
 var hasThrowable: bool = false
 
@@ -67,7 +67,9 @@ func _physics_process(_delta: float) -> void:
 #			# TODO: figure out how to add the little bird back to the chain
 #			collision.collider.queue_free()
 			
+	# warning-ignore:return_value_discarded
 	map.level_wrap(self)
+
 # lets pick up nut node know if the player already has a nut
 func pick_up() -> bool:
 	if hasThrowable == false:

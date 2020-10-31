@@ -22,8 +22,8 @@ func _ready() -> void:
 		.set_cell(coord.x + MAP_CELL_WIDTH, coord.y, id)
 		.set_cell(coord.x - MAP_CELL_WIDTH, coord.y, id)
 	
-	var num_birds = 0
-	var children = get_children()
+	var num_birds: int = 0
+	var children: Array = get_children()
 	for child in children:
 		if (child is BirdStationary or child is BirdUnchained):
 			print(child)

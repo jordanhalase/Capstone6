@@ -5,12 +5,12 @@ class_name BirdFollowing
 # This node essentially acts like a struct and is fully controlled from its
 # parent.
 
-const BirdUnchained := preload("res://Nodes/BirdUnchained.tscn")
+const BirdUnchainedScene := preload("res://Nodes/BirdUnchained.tscn")
 
 var delayBuffer: DelayBuffer
 var next: BirdFollowing
 var active: bool
-var map: Node
+var map: TileMap
 
 func _ready() -> void:
 	# TODO: Only set to active when birds are collected
@@ -30,7 +30,7 @@ func _on_BirdFollowing_body_entered(_body) -> void:
 	var bird = self
 	while bird != null:
 		if (bird.active):
-			var birdUnchained := BirdUnchained.instance()
+			var birdUnchained := BirdUnchainedScene.instance()
 			map.call_deferred("add_child", birdUnchained)
 			birdUnchained.set_global_position(bird.position)
 			bird.set_active(false)

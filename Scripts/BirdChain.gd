@@ -3,7 +3,7 @@ extends Node
 const BirdFollowingScene = preload("res://Nodes/BirdFollowing.tscn")
 
 onready var target: Node = get_node("../Player")
-var map: Node
+var map: TileMap
 var num_birds: int = 0
 var delayBuffer: DelayBuffer
 var next: BirdFollowing

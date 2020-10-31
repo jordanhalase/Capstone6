@@ -5,8 +5,8 @@ const GRAVITY: float = 4.0
 const SPEED: float = 50.0
 var velocity: Vector2 = Vector2(SPEED, 0)
 
-onready var map = get_parent()
-onready var timer = get_node("Timer")
+onready var map := get_parent()
+onready var timer: Timer = get_node("Timer")
 
 func _ready() -> void:
 	timer.set_wait_time(1)

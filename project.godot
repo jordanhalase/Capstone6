@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "AIBlock",
+"language": "GDScript",
+"path": "res://Scripts/AIBlock.gd"
+}, {
+"base": "Area2D",
 "class": "BirdFollowing",
 "language": "GDScript",
 "path": "res://Scripts/BirdFollowing.gd"
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/Utility/DelayBuffer.gd"
 } ]
 _global_script_class_icons={
+"AIBlock": "",
 "BirdFollowing": "",
 "CyclicMap": "",
 "DelayBuffer": ""

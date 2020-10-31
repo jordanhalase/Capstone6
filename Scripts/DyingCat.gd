@@ -1,6 +1,6 @@
 extends Area2D
 
-var facesRight = true
+var facesRight: bool = true
 
 func _ready() -> void:
 	position.y -= 8
