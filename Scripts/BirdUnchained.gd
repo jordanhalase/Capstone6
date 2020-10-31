@@ -28,7 +28,6 @@ func _on_Timer_timeout() -> void:
 	timer.start()
 	velocity.x *= -1.0
 
-func _on_Area2D_body_entered(_body) -> void:
-	# TODO: figure out how to add the little bird back to the chain
+func _on_Area2D_body_entered(_body: KinematicBody2D) -> void:
 	get_node("../BirdChain").increment_chain()
 	queue_free()

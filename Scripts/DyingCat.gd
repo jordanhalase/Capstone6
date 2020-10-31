@@ -4,4 +4,5 @@ var facesRight: bool = true
 
 func _ready() -> void:
 	position.y -= 8
-	if facesRight: $AnimatedSprite.flip_h = true
+	if facesRight:
+		$AnimatedSprite.flip_h = true

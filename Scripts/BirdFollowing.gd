@@ -26,7 +26,7 @@ func set_active(activate: bool) -> void:
 #
 # Then pass the current position, velocity, and animation state to that
 # `BirdUnchained`.
-func _on_BirdFollowing_body_entered(_body) -> void:
+func _on_BirdFollowing_body_entered(_body: KinematicBody2D) -> void:
 	var bird: BirdFollowing = self
 	while bird != null:
 		if (bird.active):

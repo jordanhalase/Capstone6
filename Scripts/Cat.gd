@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Cat
+
 const GRAVITY: float = 4.0
 const SPEED: float = 72.0
 const UP := Vector2(0, -1)
@@ -86,7 +88,7 @@ func _decide(ai: AIBlock) -> void:
 			else:
 				var dx = position.x - player.position.x
 				if (dx > 0 && dx < MAX_DISTANCE && facesRight == true) || (dx < 0 && dx > -MAX_DISTANCE && facesRight == false):
-					callback_params = [null, true]
+					callback_params = [0.0, true]
 				elif ai.jumpAcross:
 					callback_params = [ai.jumpAcrossVel, false]
 				else:
@@ -98,8 +100,8 @@ func _decide(ai: AIBlock) -> void:
 
 # Timer callback
 func _on_Timer_timeout() -> void:
-	var jumpY = callback_params[0]
-	var changed_direction = callback_params[1]
+	var jumpY: float = callback_params[0]
+	var changed_direction: bool = callback_params[1]
 	if changed_direction:
 		flip_direction()
 		reversed = true

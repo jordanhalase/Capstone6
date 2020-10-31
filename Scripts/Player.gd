@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 const UP := Vector2(0, -1)
 const GRAVITY: float = 4.0
 const MAX_HSPEED: float = 80.0
