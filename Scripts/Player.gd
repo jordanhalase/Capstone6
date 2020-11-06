@@ -79,3 +79,8 @@ func pick_up() -> bool:
 		return true
 	else:
 		return false
+
+
+func _on_Area2D_body_entered(body):
+	if body is Cat: 
+		EventBus.emit_signal("cat_catch")
