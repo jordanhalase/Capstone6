@@ -11,11 +11,13 @@ func _ready() -> void:
 	
 func update_score() -> void:
 	score += 10
-	get_node("HUD/score").set_text("SCORE: " + str(score))
+	get_node("HUD/Score_Num").set_text(str(score))
 
 func update_lives() -> void: 
-	lives = clamp(lives, 0, 4)
-	lives -= 1
-	get_node("Control/lives").set_text("LIVE: " + str(lives))
+	if lives != 0:
+		lives -= 1
+	if lives == 0:
+		LivesUI.rect_size.x = 0
+	get_node("Control/Lives_Num").set_text(str(lives))
 	if LivesUI != null: 
 		LivesUI.rect_size.x = lives * 16
