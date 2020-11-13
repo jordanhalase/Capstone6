@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/BirdUnchained.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Nodes/Weapon_Pickup.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Maps/Tiles/background.png" type="Texture" id=9]
 [ext_resource path="res://Nodes/Door.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Nodes/CatSpawn.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Sprites/Weapons/flower.png" type="Texture" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
@@ -216,5 +218,22 @@ z_index = -1
 texture = ExtResource( 9 )
 
 [node name="Door" parent="." instance=ExtResource( 10 )]
-position = Vector2( 72, 240 )
+position = Vector2( 240.663, 48 )
 z_index = -1
+
+[node name="CatSpawn" parent="." instance=ExtResource( 11 )]
+position = Vector2( 72, 56 )
+
+[node name="CatSpawn2" parent="CatSpawn" instance=ExtResource( 11 )]
+position = Vector2( 320, 192 )
+
+[node name="CatSpawn3" parent="CatSpawn" instance=ExtResource( 11 )]
+position = Vector2( 320, 0 )
+
+[node name="CatSpawn4" parent="CatSpawn" instance=ExtResource( 11 )]
+position = Vector2( 0, 192 )
+
+[node name="flower" type="Sprite" parent="."]
+position = Vector2( 80, 200 )
+z_index = -1
+texture = ExtResource( 12 )
