@@ -10,6 +10,9 @@ const BirdUnchained = preload("res://Scripts/BirdUnchained.gd")
 const BirdChain = preload("res://Scripts/BirdChain.gd")
 const HUD = preload("res://Nodes/HUD.tscn")
 
+onready var door = get_node("Door/DoorAnimation")
+var birdChain
+
 # Map width in pixels
 var MAP_WIDTH: float
 
@@ -29,15 +32,36 @@ func _ready() -> void:
 			print(child)
 			num_birds += 1
 			
-	var birdChain := BirdChain.new(num_birds)
+	birdChain = BirdChain.new(num_birds)
 	birdChain.set_name("BirdChain")
 	add_child(birdChain)
 	
 	var hud := HUD.instance()
 	hud.set_name("HUD")
 	add_child(hud)
+	
+	startDoor()
+	
+	
+func startDoor() -> void:
+	$Player.hide()
+	get_tree().paused = true
+	door.play("open")
+	yield(door, "animation_finished")
+	$Player.show()
+	door.play("close")
+	get_tree().paused = false
 
-# Other nodes can use this to keep themselves from wandering out of the level
+#func checkDoor() -> void:
+#	pass
+#
+func getBirdsCount() -> int:
+	return get_tree().get_nodes_in_group("BirdFollowing").size();
+
+#func _physics_process(_delta: float) -> void:
+#	pass
+	
+	
 func level_wrap(node: Node) -> bool:
 	# Wrap around the infinite map
 	var wrapped: bool = node.position.x >= MAP_WIDTH or node.position.x < 0

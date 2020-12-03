@@ -1,27 +1,47 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/Door/doorone.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Door/doorfive.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Door/doortwo.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Door/doorthree.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Door/doorfour.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Door.gd" type="Script" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ) ],
 "loop": true,
+"name": "anim",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "close",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
 "name": "idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
-"loop": true,
+"loop": false,
 "name": "open",
 "speed": 5.0
 } ]
 
-[node name="Door" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=2]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="Door" type="Area2D"]
+
+[node name="DoorAnimation" type="AnimatedSprite" parent="."]
+pause_mode = 2
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-animation = "idle"
+animation = "anim"
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="." to="DoorAnimation" method="_on_Door_body_entered"]
+[connection signal="animation_finished" from="DoorAnimation" to="DoorAnimation" method="_on_DoorAnimation_animation_finished"]
