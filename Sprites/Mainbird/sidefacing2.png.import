@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mainbirdslide.png-8d5c15df8cb67243125cdbf6fc7dafe4.stex"
+path="res://.import/sidefacing2.png-5663171ffe42a89dd9d8290b5e1768e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Mainbird/mainbirdslide.png"
-dest_files=[ "res://.import/mainbirdslide.png-8d5c15df8cb67243125cdbf6fc7dafe4.stex" ]
+source_file="res://Sprites/Mainbird/sidefacing2.png"
+dest_files=[ "res://.import/sidefacing2.png-5663171ffe42a89dd9d8290b5e1768e1.stex" ]
 
 [params]
 

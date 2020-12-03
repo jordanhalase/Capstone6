@@ -28,12 +28,12 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_right"):
 		# player moving right
-		$Sprite.set_flip_h(false)
+		$AnimatedSprite.set_flip_h(false)
 		velocity.x = min(velocity.x + ACCELERATION, MAX_HSPEED)
 		
 	elif Input.is_action_pressed("ui_left"):
 		# player moving left
-		$Sprite.set_flip_h(true)
+		$AnimatedSprite.set_flip_h(true)
 		velocity.x = max(velocity.x - ACCELERATION, -MAX_HSPEED)
 	
 	# Check if the player is on the floor
@@ -42,18 +42,20 @@ func _physics_process(_delta: float) -> void:
 		if Input.is_action_pressed("ui_up"):
 			# player jumping
 			velocity.y = -JUMP_HEIGHT
+			$AnimatedSprite.play("fly");
 			#player shooting
 			if hasThrowable:
 				var weapon = WEAPON.instance()
 				get_parent().add_child(weapon)
 				#chooses which side to shoot from
-				if $Sprite.flip_h == false:
+				if $AnimatedSprite.flip_h == false:
 					weapon.position = $ShootRight.global_position
 				else:
 					weapon.position = $ShootLeft.global_position
 					weapon.direction = -1
-			
 			hasThrowable = false
+		else:
+			$AnimatedSprite.play("walk");
 		if velocity.x >= 0:
 			velocity.x = max(0, velocity.x - FRICTION)
 		else:

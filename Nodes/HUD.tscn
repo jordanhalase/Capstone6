@@ -30,7 +30,6 @@ custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 1
 valign = 1
-percent_visible = -1.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
