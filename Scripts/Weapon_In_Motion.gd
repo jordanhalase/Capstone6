@@ -35,6 +35,7 @@ func _on_Cat_body_entered(body: KinematicBody2D) -> void:
 		if !hit_cat:
 			hit_cat = true
 			$Timer.start()
+		body.spawnNode.alive = false
 
 # This is called AFTER hitting a cat.
 func _on_Timer_timeout() -> void:
