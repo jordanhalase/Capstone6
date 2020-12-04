@@ -26,6 +26,8 @@ var thinking: bool = false
 # cat stays on the ground
 var reversed: bool = false
 
+var spawnNode = null
+
 onready var player := get_node("../Player")
 onready var map: CyclicMap = get_parent()
 
