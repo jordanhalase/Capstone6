@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/mplus_f10r.fnt" type="BitmapFont" id=2]
-[ext_resource path="res://Sprites/Mainbird/mainbirdside.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/heart.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/mplus_q06r.fnt" type="BitmapFont" id=4]
 
 [node name="HUD_NODE" type="Node2D"]
@@ -55,9 +55,13 @@ __meta__ = {
 }
 
 [node name="LivesUI" type="TextureRect" parent="Control"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
 margin_left = 56.0
-margin_right = 120.0
-margin_bottom = 16.0
+margin_top = -4.0
+margin_right = -40.0
+margin_bottom = 4.0
 texture = ExtResource( 3 )
 stretch_mode = 2
 __meta__ = {

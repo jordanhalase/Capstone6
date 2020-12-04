@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fonts/mplus_f10r.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://Nodes/PlayButton.gd" type="Script" id=2]
+
+[node name="PlayButton" type="Button"]
+margin_right = 96.0
+margin_bottom = 22.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Play"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_scene_path = "res://Maps/BasicMap.tscn"
+[connection signal="button_up" from="." to="." method="_on_PlayButton_button_up"]

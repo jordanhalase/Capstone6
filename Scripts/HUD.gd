@@ -20,4 +20,4 @@ func update_lives() -> void:
 		LivesUI.rect_size.x = 0
 	get_node("Control/Lives_Num").set_text(str(lives))
 	if LivesUI != null: 
-		LivesUI.rect_size.x = lives * 16
+		LivesUI.rect_size.x = lives * 8

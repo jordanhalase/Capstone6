@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Capstone6"
-run/main_scene="res://Maps/BasicMap.tscn"
+run/main_scene="res://Maps/Menu.tscn"
 
 [autoload]
 
