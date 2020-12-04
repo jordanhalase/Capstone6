@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/BirdUnchained.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/CyclicMap.gd" type="Script" id=3]
-[ext_resource path="res://Nodes/Cat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/AIBlock.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/BirdStationary.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Maps/Tiles/tile.png" type="Texture" id=7]
@@ -106,34 +105,6 @@ position = Vector2( 296, 128 )
 
 [node name="BirdUnchained" parent="CyclicMap" instance=ExtResource( 2 )]
 position = Vector2( 184, 176 )
-
-[node name="Cat" parent="CyclicMap" instance=ExtResource( 4 )]
-position = Vector2( 200, 152 )
-facesRight = false
-
-[node name="Cat2" parent="CyclicMap" instance=ExtResource( 4 )]
-position = Vector2( 312, 152 )
-
-[node name="Cat3" parent="CyclicMap" instance=ExtResource( 4 )]
-position = Vector2( 160, 104 )
-
-[node name="Cat4" parent="CyclicMap" instance=ExtResource( 4 )]
-position = Vector2( 392, 104 )
-facesRight = false
-
-[node name="Cat5" parent="CyclicMap" instance=ExtResource( 4 )]
-position = Vector2( 376, 200 )
-facesRight = false
-
-[node name="Cat6" parent="CyclicMap" instance=ExtResource( 4 )]
-position = Vector2( 136, 200 )
-
-[node name="Cat7" parent="CyclicMap" instance=ExtResource( 4 )]
-position = Vector2( 160, 248 )
-facesRight = false
-
-[node name="Cat8" parent="CyclicMap" instance=ExtResource( 4 )]
-position = Vector2( 344, 248 )
 
 [node name="AIBlock" parent="CyclicMap" instance=ExtResource( 5 )]
 position = Vector2( 224, 160 )
@@ -247,6 +218,15 @@ position = Vector2( 72, 56 )
 
 [node name="CatSpawn2" parent="CyclicMap" instance=ExtResource( 11 )]
 position = Vector2( 392, 248 )
+
+[node name="CatSpawn3" parent="CyclicMap" instance=ExtResource( 11 )]
+position = Vector2( 41.5, 198 )
+
+[node name="CatSpawn4" parent="CyclicMap" instance=ExtResource( 11 )]
+position = Vector2( 442, 52.5 )
+
+[node name="CatSpawn5" parent="CyclicMap" instance=ExtResource( 11 )]
+position = Vector2( 313.5, 152 )
 
 [node name="background" type="Sprite" parent="."]
 visible = false
