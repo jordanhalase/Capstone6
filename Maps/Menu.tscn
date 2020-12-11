@@ -1,8 +1,41 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Fonts/mplus_f10r.fnt" type="BitmapFont" id=1]
 [ext_resource path="res://Nodes/PlayButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Nodes/QuitButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/Littiebird/littlebirdown.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Mainbird/sidefacing.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Mainbird/sidefacing2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Cat/catframeone.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Cat/catframetwo.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Cat/catframethree.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Littiebird/littlebirdup.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Littiebird/littlebirdmiddle.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Cat/catframefour.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
 
 [node name="Menu" type="Control"]
 margin_right = 480.0
@@ -14,8 +47,6 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.471939
-margin_right = 0.471924
 stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,12 +55,59 @@ __meta__ = {
 [node name="Title " type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -45.0
+margin_left = -90.0
 margin_top = 80.0
-margin_right = 45.0
-margin_bottom = 96.0
+margin_right = 6.0
+margin_bottom = 91.0
+grow_horizontal = 0
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 1 )
-text = "Flicky Revised"
+text = "Flicky, Revised!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flicky" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -220.0
+margin_top = 110.0
+margin_right = -124.0
+margin_bottom = 127.0
+custom_fonts/font = ExtResource( 1 )
+text = "Flicky"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enemy Cat" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -220.0
+margin_top = 238.0
+margin_right = -124.0
+margin_bottom = 263.0
+custom_fonts/font = ExtResource( 1 )
+text = "Enemy Cat
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Baby Birds" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 110.0
+margin_top = 185.0
+margin_right = 206.0
+margin_bottom = 210.0
+custom_fonts/font = ExtResource( 1 )
+text = "Baby Birds
+"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -40,14 +118,68 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -24.0
-margin_right = 48.0
-margin_bottom = 24.0
+margin_left = -70.0
+margin_top = -3.0
+margin_right = 80.0
+margin_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 150, 50 )
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PlayButton" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 150.0
+margin_bottom = 23.0
 
 [node name="QuitButton" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 27.0
+margin_right = 150.0
+margin_bottom = 50.0
+
+[node name="flicky" type="AnimatedSprite" parent="."]
+position = Vector2( 70, 65 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 1 )
+animation = "walk"
+frame = 1
+playing = true
+
+[node name="cat" type="AnimatedSprite" parent="."]
+position = Vector2( 70, 193.307 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 2 )
+animation = "run"
+frame = 1
+playing = true
+
+[node name="babybird" type="AnimatedSprite" parent="."]
+position = Vector2( 420, 100 )
+scale = Vector2( 4.5, 4.5 )
+frames = SubResource( 3 )
+frame = 1
+playing = true
+
+[node name="babybird2" type="AnimatedSprite" parent="."]
+position = Vector2( 375, 130 )
+scale = Vector2( 4.5, 4.5 )
+frames = SubResource( 3 )
+playing = true
+
+[node name="babybird3" type="AnimatedSprite" parent="."]
+position = Vector2( 420, 155 )
+scale = Vector2( 4.5, 4.5 )
+frames = SubResource( 3 )
+playing = true
+
+[node name="Background" type="ColorRect" parent="."]
+show_behind_parent = true
+margin_right = 480.0
+margin_bottom = 272.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
