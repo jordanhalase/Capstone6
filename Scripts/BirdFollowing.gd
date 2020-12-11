@@ -34,5 +34,6 @@ func _on_BirdFollowing_body_entered(_body: KinematicBody2D) -> void:
 			map.call_deferred("add_child", birdUnchained)
 			birdUnchained.set_global_position(bird.position)
 			bird.set_active(false)
+			EventBus.emit_signal("bird_dropped")
 		bird = bird.next
 

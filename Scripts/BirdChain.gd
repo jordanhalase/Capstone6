@@ -22,7 +22,7 @@ func _ready() -> void:
 	map = get_parent()
 	delayBuffer = DelayBuffer.new(DELAY_FRAMES + DELAY_TARGET, target.position)
 	# warning-ignore:return_value_discarded
-	EventBus.connect("bird_collected", self, "increment_chain")
+	#EventBus.connect("bird_collected", self, "increment_chain")
 	
 	var lag: BirdFollowing
 	if (num_birds > 0):

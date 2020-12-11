@@ -30,4 +30,5 @@ func _on_Timer_timeout() -> void:
 
 func _on_Area2D_body_entered(_body: KinematicBody2D) -> void:
 	get_node("../BirdChain").increment_chain()
+	EventBus.emit_signal("bird_collected")
 	queue_free()

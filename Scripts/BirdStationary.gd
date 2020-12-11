@@ -7,5 +7,6 @@ func _on_BirdStationary_body_entered(_body: KinematicBody2D) -> void:
 	# collides with this based on its collision mask.
 	
 	#if body is Player:
+		get_node("../BirdChain").increment_chain()
 		EventBus.emit_signal("bird_collected")
 		queue_free()

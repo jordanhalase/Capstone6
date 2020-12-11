@@ -8,9 +8,14 @@ func _ready() -> void:
 	# warning-ignore:return_value_discarded
 	EventBus.connect("bird_collected", self, "update_score")
 	EventBus.connect("cat_catch", self, "update_lives")
+	EventBus.connect("bird_dropped", self, "deincrement_score")
 	
 func update_score() -> void:
 	score += 10
+	get_node("HUD/Score_Num").set_text(str(score))
+
+func deincrement_score() -> void:
+	score -= 10
 	get_node("HUD/Score_Num").set_text(str(score))
 
 func update_lives() -> void: 
