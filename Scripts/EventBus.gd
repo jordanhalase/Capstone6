@@ -4,3 +4,5 @@ extends Node
 signal bird_collected
 
 signal cat_catch
+
+signal bird_dropped
