@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Utility/DelayBuffer.gd"
 }, {
+"base": "AnimatedSprite",
+"class": "Door",
+"language": "GDScript",
+"path": "res://Scripts/Door.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -45,6 +50,7 @@ _global_script_class_icons={
 "Cat": "",
 "CyclicMap": "",
 "DelayBuffer": "",
+"Door": "",
 "Player": ""
 }
 
@@ -56,6 +62,7 @@ run/main_scene="res://Maps/Menu.tscn"
 [autoload]
 
 EventBus="*res://Scripts/EventBus.gd"
+BirdChain="*res://Scripts/BirdChain.gd"
 
 [display]
 

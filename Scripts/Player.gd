@@ -12,9 +12,11 @@ const FRICTION_COEF: float = 0.16
 const FRICTION: float = ACCELERATION*FRICTION_COEF
 
 const WEAPON := preload("res://Nodes/Weapon_In_Motion.tscn")
+const CAT := preload("res://Nodes/Cat.tscn")
 
 var velocity: Vector2 = Vector2()
 onready var map: CyclicMap = get_parent()
+onready var init_pos = position
 
 var hasThrowable: bool = false
 
@@ -82,8 +84,30 @@ func pick_up() -> bool:
 	else:
 		return false
 
+func killPlayer() -> void:
+		get_tree().paused = true
+		$AnimatedSprite.play("die")
+#		yield($AnimatedSprite, "animation_finished")
+#		print("I'm here")
+		position = init_pos
+		map.startDoor()
+
+
 
 func _on_Area2D_body_entered(body):
 	if body is Cat: 
 		EventBus.emit_signal("cat_catch")
+		var oldSpawn = body.spawnNode
+		var oldPos = oldSpawn.position
+		body.queue_free()
+		var cat = CAT.instance()
+		cat.spawnNode = oldSpawn
+		
+#		oldSpawn.add_child(cat)
+		oldSpawn.alive = true
+		killPlayer()
 #		get_tree().reload_current_scene()
+
+
+func _on_AnimatedSprite_animation_finished():
+	pass # Replace with function body.

@@ -4,6 +4,7 @@ const UP: Vector2 = Vector2(0, -1)
 const GRAVITY: float = 4.0
 const SPEED: float = 50.0
 var velocity: Vector2 = Vector2(SPEED, 0)
+var collected: int = 0
 
 onready var map := get_parent()
 onready var timer: Timer = get_node("Timer")
@@ -30,5 +31,6 @@ func _on_Timer_timeout() -> void:
 
 func _on_Area2D_body_entered(_body: KinematicBody2D) -> void:
 	get_node("../BirdChain").increment_chain()
+	++collected
 	EventBus.emit_signal("bird_collected")
 	queue_free()

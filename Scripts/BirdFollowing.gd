@@ -12,6 +12,7 @@ var next: BirdFollowing
 var active: bool
 var map: TileMap
 
+
 func _ready() -> void:
 	# TODO: Only set to active when birds are collected
 	set_active(false)

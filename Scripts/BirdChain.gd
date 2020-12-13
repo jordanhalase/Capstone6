@@ -8,6 +8,7 @@ var num_birds: int = 0
 var delayBuffer: DelayBuffer
 var next: BirdFollowing
 
+
 # The size of the delay buffer
 const DELAY_FRAMES: int = 12
 
@@ -64,3 +65,8 @@ func increment_chain() -> void:
 			bird.set_active(true)
 			return
 	push_error("Bird chain overflow")
+
+func getCount() -> int:
+	for bir in BirdFollowing:
+		print("hah")
+	return 4

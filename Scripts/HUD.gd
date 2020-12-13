@@ -26,3 +26,6 @@ func update_lives() -> void:
 	get_node("Control/Lives_Num").set_text(str(lives))
 	if LivesUI != null: 
 		LivesUI.rect_size.x = lives * 8
+
+func get_score() -> int:
+	return 30
