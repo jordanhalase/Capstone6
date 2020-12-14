@@ -11,11 +11,6 @@ extents = Vector2( 4, 8 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "run",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "sit",
@@ -25,9 +20,16 @@ animations = [ {
 "loop": true,
 "name": "jump",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
 } ]
 
-[node name="Cat" type="KinematicBody2D"]
+[node name="Cat" type="KinematicBody2D" groups=[
+"Cat",
+]]
 collision_layer = 4
 script = ExtResource( 1 )
 

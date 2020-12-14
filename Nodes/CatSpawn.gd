@@ -27,3 +27,6 @@ func _on_Timer_timeout() -> void:
 	cat.position = $Position2D.global_position
 	get_parent().add_child(cat)
 	alive = true
+
+func _reset_Timer() -> void:
+	$Timer.start()
