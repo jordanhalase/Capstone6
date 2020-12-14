@@ -22,6 +22,8 @@ func update_lives() -> void:
 	if lives != 0:
 		lives -= 1
 	if lives == 0:
+		get_tree().reload_current_scene()
+		get_tree().change_scene("res://Maps/GameOver.tscn")
 		LivesUI.rect_size.x = 0
 	get_node("Control/Lives_Num").set_text(str(lives))
 	if LivesUI != null: 

@@ -130,14 +130,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="Game Over" type="Label" parent="VBoxContainer"]
 margin_right = 150.0
-margin_bottom = 23.0
+margin_bottom = 14.0
+text = "Game Over"
+align = 1
+
+[node name="PlayButton" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 18.0
+margin_right = 150.0
+margin_bottom = 35.0
+text = "Play Again!"
 
 [node name="QuitButton" parent="VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 27.0
+margin_top = 39.0
 margin_right = 150.0
-margin_bottom = 50.0
+margin_bottom = 56.0
 
 [node name="flicky" type="AnimatedSprite" parent="."]
 position = Vector2( 70, 65 )
@@ -159,21 +167,21 @@ playing = true
 position = Vector2( 420, 100 )
 scale = Vector2( 4.5, 4.5 )
 frames = SubResource( 3 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="babybird2" type="AnimatedSprite" parent="."]
 position = Vector2( 375, 130 )
 scale = Vector2( 4.5, 4.5 )
 frames = SubResource( 3 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="babybird3" type="AnimatedSprite" parent="."]
 position = Vector2( 420, 155 )
 scale = Vector2( 4.5, 4.5 )
 frames = SubResource( 3 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Background" type="ColorRect" parent="."]

@@ -8,8 +8,9 @@ extends AnimatedSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+#	get_tree().paused = true # Replace with function body.
+#	play()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -17,4 +18,4 @@ func _ready():
 
 
 func _on_AnimatedSprite_animation_finished():
-	get_tree().paused = false # Replace with function body.
+	queue_free()

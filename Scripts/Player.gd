@@ -13,8 +13,7 @@ const FRICTION: float = ACCELERATION*FRICTION_COEF
 
 const WEAPON := preload("res://Nodes/Weapon_In_Motion.tscn")
 const CAT := preload("res://Nodes/Cat.tscn")
-const die := preload("res://Nodes/DyingPlayer.tscn")
-
+const dyingPlayer := preload("res://Nodes/DyingPlayer.tscn")
 
 var velocity: Vector2 = Vector2()
 onready var map: CyclicMap = get_parent()
@@ -88,25 +87,27 @@ func pick_up() -> bool:
 		return false
 
 func killPlayer() -> void:
-		get_tree().paused = true
-		
-		#TODO: briefly show the dying animation before reseting the player
-		$AnimatedSprite.play("die")
-		
-		get_tree().paused = false
-		position = init_pos
-		map.startDoor()
+#	get_tree().paused = true
+	var die = dyingPlayer.instance()
+	die.position = position
+	get_parent().add_child(die)
+
+	hide()
+	get_tree().paused = true
+	die.play()
+	yield(die, "animation_finished")
+	position = init_pos
+	show()
+	
+	map.startDoor()
 
 
 #TODO: respawn the cat that colided with the player (or all cats if not epic)
 func _on_Area2D_body_entered(body):
 	if body is Cat: 
 		EventBus.emit_signal("cat_catch")
-#		var oldSpawn = body.spawnNode
-#		body.queue_free()
-#		oldSpawn._reset_Timer()
+#		get_tree().paused = true
 		resetCats()
-
 		killPlayer()
 		
 func resetCats() -> void:

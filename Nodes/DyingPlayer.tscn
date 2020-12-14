@@ -5,15 +5,16 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), null, ExtResource( 2 ), null, ExtResource( 2 ), null, ExtResource( 2 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
+[node name="DyingBird" type="AnimatedSprite"]
+pause_mode = 2
 frames = SubResource( 1 )
-frame = 2
+frame = 4
 playing = true
 script = ExtResource( 1 )
 [connection signal="animation_finished" from="." to="." method="_on_AnimatedSprite_animation_finished"]
