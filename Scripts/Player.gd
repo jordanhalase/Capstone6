@@ -103,6 +103,7 @@ func killPlayer() -> void:
 func _on_Area2D_body_entered(body):
 	if body is Cat: 
 		EventBus.emit_signal("cat_catch")
+		hasThrowable = false
 		unchainBirds()
 		resetCats()
 		killPlayer()
