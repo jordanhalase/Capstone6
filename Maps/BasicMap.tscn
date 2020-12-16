@@ -220,10 +220,10 @@ position = Vector2( 72, 56 )
 position = Vector2( 392, 248 )
 
 [node name="CatSpawn3" parent="CyclicMap" instance=ExtResource( 11 )]
-position = Vector2( 41.5, 198 )
+position = Vector2( 41.5, 200 )
 
 [node name="CatSpawn4" parent="CyclicMap" instance=ExtResource( 11 )]
-position = Vector2( 442, 52.5 )
+position = Vector2( 442, 55.5 )
 
 [node name="CatSpawn5" parent="CyclicMap" instance=ExtResource( 11 )]
 position = Vector2( 313.5, 152 )

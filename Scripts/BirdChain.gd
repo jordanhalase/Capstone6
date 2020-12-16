@@ -65,8 +65,3 @@ func increment_chain() -> void:
 			bird.set_active(true)
 			return
 	push_error("Bird chain overflow")
-
-func getCount() -> int:
-	for bir in BirdFollowing:
-		print("hah")
-	return 4

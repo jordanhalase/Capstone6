@@ -14,6 +14,7 @@ const FRICTION: float = ACCELERATION*FRICTION_COEF
 const WEAPON := preload("res://Nodes/Weapon_In_Motion.tscn")
 const CAT := preload("res://Nodes/Cat.tscn")
 const dyingPlayer := preload("res://Nodes/DyingPlayer.tscn")
+const BirdUnchainedScene := preload("res://Nodes/BirdUnchained.tscn")
 
 var velocity: Vector2 = Vector2()
 onready var map: CyclicMap = get_parent()
@@ -106,7 +107,7 @@ func killPlayer() -> void:
 func _on_Area2D_body_entered(body):
 	if body is Cat: 
 		EventBus.emit_signal("cat_catch")
-#		get_tree().paused = true
+		unchainBirds()
 		resetCats()
 		killPlayer()
 		
@@ -116,6 +117,15 @@ func resetCats() -> void:
 		var spawn = cat.spawnNode
 		cat.queue_free()
 		spawn._reset_Timer()
-	
+
+func unchainBirds() -> void:
+	var birds = get_tree().get_nodes_in_group("FollowingBirds")
+	for bird in birds:
+		var birdUnchained := BirdUnchainedScene.instance()
+		map.call_deferred("add_child", birdUnchained)
+		birdUnchained.set_global_position(bird.position)
+		bird.set_active(false)
+		EventBus.emit_signal("bird_dropped")
+
 func _on_AnimatedSprite_animation_finished():
 	pass

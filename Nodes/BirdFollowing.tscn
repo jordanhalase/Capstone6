@@ -6,7 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
 
-[node name="BirdFollowing" type="Area2D"]
+[node name="BirdFollowing" type="Area2D" groups=[
+"FollowingBirds",
+]]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 2 )

@@ -14,7 +14,6 @@ animations = [ {
 [node name="DyingBird" type="AnimatedSprite"]
 pause_mode = 2
 frames = SubResource( 1 )
-frame = 4
 playing = true
 script = ExtResource( 1 )
 [connection signal="animation_finished" from="." to="." method="_on_AnimatedSprite_animation_finished"]
