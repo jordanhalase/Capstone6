@@ -88,22 +88,18 @@ func pick_up() -> bool:
 		return false
 
 func killPlayer() -> void:
-#	get_tree().paused = true
 	var die = dyingPlayer.instance()
 	die.position = position
 	get_parent().add_child(die)
-
 	hide()
 	get_tree().paused = true
 	die.play()
 	yield(die, "animation_finished")
 	position = init_pos
 	show()
-	
 	map.startDoor()
 
 
-#TODO: respawn the cat that colided with the player (or all cats if not epic)
 func _on_Area2D_body_entered(body):
 	if body is Cat: 
 		EventBus.emit_signal("cat_catch")
@@ -121,11 +117,12 @@ func resetCats() -> void:
 func unchainBirds() -> void:
 	var birds = get_tree().get_nodes_in_group("FollowingBirds")
 	for bird in birds:
-		var birdUnchained := BirdUnchainedScene.instance()
-		map.call_deferred("add_child", birdUnchained)
-		birdUnchained.set_global_position(bird.position)
-		bird.set_active(false)
-		EventBus.emit_signal("bird_dropped")
+		if bird.active:
+			var birdUnchained := BirdUnchainedScene.instance()
+			map.call_deferred("add_child", birdUnchained)
+			birdUnchained.set_global_position(bird.position)
+			bird.set_active(false)
+			EventBus.emit_signal("bird_dropped")
 
 func _on_AnimatedSprite_animation_finished():
 	pass
