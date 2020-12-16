@@ -25,30 +25,42 @@ func _on_DoorAnimation_animation_finished():
 
 	#TODO: get the little birds count
 func _on_Door_body_entered(body):
-	pass
-#	if body is Player:
+	if body is Player:
 #		print(areBirds())
 #		if areBirds():
 #			get_tree().paused = true
 #			play("open")
 #			yield(self, "animation_finished")
-#			#TODO: save the birds
+			#TODO: save the birds
 #			print(collectBirds())
+			collectBirds()
 #			play("close")
 #			get_tree().paused = false
-#
+			
+			
 #func areBirds() -> bool:
 #	var birds = get_tree().get_nodes_in_group("FollowingBirds")
 #	return birds[0].active
-#
-#
-#func collectBirds() -> int:
-#	var birds = get_tree().get_nodes_in_group("FollowingBirds")
-#	for bird in birds:
-#		if bird.active:
+
+
+func collectBirds() -> int:
+	var birds = get_tree().get_nodes_in_group("FollowingBirds")
+	for bird in birds:
+		if bird.active:
+			
+			get_tree().paused = true
+			play("open")
+			yield(self, "animation_finished")
+			
 #			var pbird = bird
 #			bird = bird.next
 #			pbird.active = false
-##			pbird.queue_free()
-#			++ count
-#	return count
+			
+			bird.set_active(false)
+
+#			pbird.queue_free()
+			play("close")
+			++ count
+	if 	get_tree().paused == true:
+		get_tree().paused = false
+	return count

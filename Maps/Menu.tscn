@@ -159,19 +159,20 @@ playing = true
 position = Vector2( 420, 100 )
 scale = Vector2( 4.5, 4.5 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="babybird2" type="AnimatedSprite" parent="."]
 position = Vector2( 375, 130 )
 scale = Vector2( 4.5, 4.5 )
 frames = SubResource( 3 )
+frame = 3
 playing = true
 
 [node name="babybird3" type="AnimatedSprite" parent="."]
 position = Vector2( 420, 155 )
 scale = Vector2( 4.5, 4.5 )
 frames = SubResource( 3 )
+frame = 3
 playing = true
 
 [node name="Background" type="ColorRect" parent="."]
