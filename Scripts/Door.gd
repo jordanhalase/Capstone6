@@ -6,7 +6,6 @@ class_name Door
 # var a = 2
 # var b = "text"
 var next: BirdFollowing
-var count: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,41 +25,20 @@ func _on_DoorAnimation_animation_finished():
 	#TODO: get the little birds count
 func _on_Door_body_entered(body):
 	if body is Player:
-#		print(areBirds())
-#		if areBirds():
-#			get_tree().paused = true
-#			play("open")
-#			yield(self, "animation_finished")
-			#TODO: save the birds
-#			print(collectBirds())
-			collectBirds()
-#			play("close")
-#			get_tree().paused = false
+		collectBirds()
 			
-			
-#func areBirds() -> bool:
-#	var birds = get_tree().get_nodes_in_group("FollowingBirds")
-#	return birds[0].active
-
-
-func collectBirds() -> int:
+func collectBirds() -> void:
+	var count: int = 0
 	var birds = get_tree().get_nodes_in_group("FollowingBirds")
 	for bird in birds:
 		if bird.active:
-			
 			get_tree().paused = true
 			play("open")
 			yield(self, "animation_finished")
-			
-#			var pbird = bird
-#			bird = bird.next
-#			pbird.active = false
-			
 			bird.set_active(false)
-
-#			pbird.queue_free()
 			play("close")
-			++ count
+			count = count + 1
 	if 	get_tree().paused == true:
 		get_tree().paused = false
-	return count
+	if count > 0:
+		EventBus.emit_signal("bird_collect", count)

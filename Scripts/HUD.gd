@@ -9,14 +9,16 @@ func _ready() -> void:
 	EventBus.connect("bird_collected", self, "update_score")
 	EventBus.connect("cat_catch", self, "update_lives")
 	EventBus.connect("bird_dropped", self, "deincrement_score")
+	EventBus.connect("bird_collect", self, "mult_score")
 	
 func update_score() -> void:
 	score += 10
 	get_node("HUD/Score_Num").set_text(str(score))
 
 func deincrement_score() -> void:
-	score -= 10
-	get_node("HUD/Score_Num").set_text(str(score))
+	pass
+#	score -= 10
+#	get_node("HUD/Score_Num").set_text(str(score))
 
 func update_lives() -> void: 
 	if lives != 0:
@@ -29,5 +31,8 @@ func update_lives() -> void:
 	if LivesUI != null: 
 		LivesUI.rect_size.x = lives * 8
 
-func get_score() -> int:
-	return 30
+func mult_score(count: int) -> void:
+	print("I'm emitted !!")
+	print(count)
+	score = count*score
+	get_node("HUD/Score_Num").set_text(str(score))

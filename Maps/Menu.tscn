@@ -144,7 +144,6 @@ position = Vector2( 70, 65 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "walk"
-frame = 1
 playing = true
 
 [node name="cat" type="AnimatedSprite" parent="."]
@@ -152,27 +151,27 @@ position = Vector2( 70, 193.307 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 2 )
 animation = "run"
-frame = 1
 playing = true
 
 [node name="babybird" type="AnimatedSprite" parent="."]
 position = Vector2( 420, 100 )
 scale = Vector2( 4.5, 4.5 )
 frames = SubResource( 3 )
+frame = 3
 playing = true
 
 [node name="babybird2" type="AnimatedSprite" parent="."]
 position = Vector2( 375, 130 )
 scale = Vector2( 4.5, 4.5 )
 frames = SubResource( 3 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="babybird3" type="AnimatedSprite" parent="."]
 position = Vector2( 420, 155 )
 scale = Vector2( 4.5, 4.5 )
 frames = SubResource( 3 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Background" type="ColorRect" parent="."]

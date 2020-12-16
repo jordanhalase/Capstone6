@@ -6,3 +6,5 @@ signal bird_collected
 signal cat_catch
 
 signal bird_dropped
+
+signal bird_collect(count)
